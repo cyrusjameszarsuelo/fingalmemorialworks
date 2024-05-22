@@ -12,7 +12,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        $branch = Branch::All();
+        return view('pages.branches.index')
+            ->with('branches', $branch);
     }
 
     /**

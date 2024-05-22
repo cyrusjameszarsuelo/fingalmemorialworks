@@ -12,7 +12,9 @@ class PaymentTypeController extends Controller
      */
     public function index()
     {
-        //
+        $paymentType = PaymentType::All();
+        return view('pages.payment-types.index')
+            ->with('paymentTypes', $paymentType);
     }
 
     /**

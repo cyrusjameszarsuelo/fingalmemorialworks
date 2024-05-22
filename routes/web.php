@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\AccountTypeController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentTypesController;
+use App\Http\Controllers\OrderTypeController;
+use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +24,20 @@ Route::get('/', function () {
     return view('pages.order.index');
 });
 
-// Test - charles - koyni
+
+
+Route::get('users',[UserController::class, 'index']);
+Route::get('users/edit',[UserController::class, 'edit']);
+
+Route::get('branches',[BranchController::class, 'index']);
+
+Route::get('document-types',[DocumentTypesController::class, 'index']);
+
+Route::get('account-types',[AccountTypeController::class, 'index']);
+
+Route::get('order-types',[OrderTypeController::class, 'index']);
+
+Route::get('payment-types',[PaymentTypeController::class, 'index']);
+
+Route::get('categories',[CategoryController::class, 'index']);
+

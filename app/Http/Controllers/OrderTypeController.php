@@ -12,7 +12,9 @@ class OrderTypeController extends Controller
      */
     public function index()
     {
-        //
+        $orderType = OrderType::All();
+        return view('pages.order-types.index')
+            ->with('orderTypes', $orderType);
     }
 
     /**

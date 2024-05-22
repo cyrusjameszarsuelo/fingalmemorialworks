@@ -128,6 +128,10 @@
                             <li><a href="/users">Users</a></li>
                             <li><a href="/branches">Branches</a></li>
                             <li><a href="/document-types">Document Types</a></li>
+                            <li><a href="/account-types">Account Types</a></li>
+                            <li><a href="/categories">Categories</a></li>
+                            <li><a href="/order-types">Order Types</a></li>
+                            <li><a href="/payment-types">Payment Types</a></li>
                         </ul>
                     </div>
                 </div>

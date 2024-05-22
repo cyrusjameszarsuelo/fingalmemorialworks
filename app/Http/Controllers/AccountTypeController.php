@@ -12,7 +12,9 @@ class AccountTypeController extends Controller
      */
     public function index()
     {
-        //
+        $accountType = AccountType::All();
+        return view('pages.account-types.index')
+            ->with('accountTypes', $accountType);
     }
 
     /**
