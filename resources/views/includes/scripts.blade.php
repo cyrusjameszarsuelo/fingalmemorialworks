@@ -55,16 +55,22 @@
 <!--  todo JS
             ============================================ -->
 <script src="{{ asset('assets/js/todo/jquery.todo.js') }}"></script>
-<!-- plugins JS
-            ============================================ -->
-<script src="{{ asset('assets/js/plugins.js') }}"></script>
-<!-- main JS
-            ============================================ -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+
 <!-- Data Table JS
   ============================================ -->
 <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/js/data-table/data-table-act.js') }}"></script>
 <!-- bootstrap select JS
   ============================================ -->
-<script src="{{ asset('assets/js/bootstrap-select/bootstrap-select.js')}}"></script>
+<script src="{{ asset('assets/js/bootstrap-select/bootstrap-select.js') }}"></script>
+<script src="{{ asset('assets/js/chosen/chosen.jquery.js') }}"></script>
+<!-- datapicker JS
+  ============================================ -->
+<script src="{{ asset('assets/js/datapicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('assets/js/datapicker/datepicker-active.js') }}"></script>
+<!-- plugins JS
+            ============================================ -->
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<!-- main JS
+            ============================================ -->
+<script src="{{ asset('assets/js/main.js') }}"></script>

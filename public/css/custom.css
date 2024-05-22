@@ -2,6 +2,15 @@
     --light-primary: #8981d8;
     --dark-primary: #8965DC;
 }
+.mt-40 {
+    margin-top: 40px;
+}
+.mt-50 {
+    margin-top: 50px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
 /* HEADER */
 h1.text-logo {
     color:#fff;
@@ -35,7 +44,14 @@ h1.text-logo {
     padding: 10px;
 }
 /* END BREADCRUMBS */
-
+.datepicker-days .table-condensed thead tr {
+    background: var(--dark-primary);
+    color: #fff;
+}
+.datepicker-days .table-condensed thead tr:last-child {
+    background: var(--light-primary);
+    height: 40px;
+}
 .bootstrap-select.btn-group .dropdown-menu {
     top: 93%;
 }
@@ -60,4 +76,62 @@ h1.text-logo {
 /* TABLE */
 table.dataTable.no-footer {
     border-bottom: none;
+}
+/* END TABLE */
+
+/* SECTION */
+.section-content {
+    background:#fff;
+    padding:20px;
+}
+/* END SECTION */
+h3.title {
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+h4.title-header {
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    width: fit-content;
+}
+h4.title-header::after {
+    content: "";
+    width: 100%;
+    height: .2em;
+    background: #8981d8;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    margin: 0 auto;
+}
+.divider-left {
+    border-right: 1px solid #c8c8c8;
+}
+.empty-div {
+    height: 45px;
+}
+
+@media(max-width:767px) {
+    .divider-left {
+        border-right: none;
+    }
+    .empty-div {
+        height: 0px;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .title-header-md {
+        margin-bottom: 45px !important;
+    }
+    .empty-div {
+        height: 65px;
+    }
+    h4.title-header::after {
+        display: none;
+    }
+    
 }

@@ -13,14 +13,36 @@ class OrderController extends Controller
     public function index()
     {
         //
+        return view('pages.order.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($tab = null)
     {
-        //
+        $tabs = [
+            'general-details',
+            'job-details',
+            'inscription-details',
+            'accounts-posting',
+            'photos',
+        ];
+        $url = 'pages.order.' . $tab;
+        print_r($url);
+        switch ($tab) {
+            case 'general-details':
+                return view($url)
+                    ->withTabs($tabs);
+                break;
+            case 'job-details':
+                return view($url)
+                    ->withTabs($tabs);
+                break;
+            default:
+                break;
+        }
+        // return view('pages.order.form');
     }
 
     /**

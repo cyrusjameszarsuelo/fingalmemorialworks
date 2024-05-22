@@ -119,12 +119,14 @@
                                 <div>
                                     <div class="col-lg-6">
                                         <div class="header-btn">
-                                            <button class="btn btn-primary btn-icon-notika waves-effect"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
+                                            <button type="submit" class="btn btn-primary btn-icon-notika waves-effect"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="header-btn">
-                                            <a href="/order/create"><button class="btn btn-primary btn-icon-notika waves-effect"><i class="fa fa-plus-circle" aria-hidden="true"></i> CREATE</button></a>
+                                            <a href="/order/create/general-details">
+                                                <button type="button" class="btn btn-primary btn-icon-notika waves-effect" ><i class="fa fa-plus-circle" aria-hidden="true"></i> CREATE</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

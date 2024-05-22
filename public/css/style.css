@@ -2367,7 +2367,6 @@ hr {
     padding: 0;
     width: 22px;
     height: 22px;
-    background: url(img/green1.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2970,7 +2969,6 @@ textarea.auto-size {
     background-color: #FFF;
     background-position: right calc(100% - 7px);
     background-repeat: no-repeat;
-    background-image: url(../assets/images/select.png);
     pointer-events: none;
     z-index: 5;
 }
@@ -3146,7 +3144,6 @@ textarea.auto-size {
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close{
 	width: 15px;
     height: 10px;
-    background: url(img/chosen-sprite.png) -38px 1px no-repeat;
 	display: inline-block;
     text-align: center;
 	color:#333;
@@ -3169,7 +3166,6 @@ textarea.auto-size {
     background-color: #FFF;
     background-position: right calc(100% - 7px);
     background-repeat: no-repeat;
-    background-image: url(images/select.png);
     pointer-events: none;
     z-index: 5;
 }
@@ -3331,7 +3327,6 @@ textarea.auto-size {
 	margin-bottom:5px;
 }
 .nk-datapk-ctm label{
-	font-size:16px;
 	color:#333;
 }
 .nk-datapk-ctm .input-group-addon{
@@ -3359,6 +3354,7 @@ textarea.auto-size {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
 	width: 300px;
+    margin-top: 35px;
 }
 .datepicker-days  .table-condensed thead tr{
 	background:#8981d8;
@@ -4061,10 +4057,6 @@ textarea.auto-size {
     position: relative;
     top: 2px;
     padding: 6px 25px;
-}
-.chosen-container-single .chosen-search input[type="text"]{
-	background: white url(chosen-sprite.png) no-repeat 100% -20px;
-    background: url(chosen-sprite.png) no-repeat 100% -45px;
 }
 .modal-footer .btn-primary[disabled]:focus, .modal-footer .btn-primary[disabled]:hover{
 	background: #8981d8;

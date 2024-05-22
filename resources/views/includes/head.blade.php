@@ -52,6 +52,10 @@
     <!-- bootstrap select CSS
   ============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select/bootstrap-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/chosen/chosen.css') }}">
+    <!-- datapicker CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/datapicker/datepicker3.css') }}">
     <!-- style CSS
   ============================================ -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -69,6 +73,22 @@
                 url('{{ asset('assets/fonts/notika-icon.svg?qzfrsz#notika-icon') }}') format('svg');
             font-weight: normal;
             font-style: normal;
+        }
+
+        .bootstrap-select>.btn-default:before,
+        .chosen-select-act:before {
+            background-image: url("{{ asset('assets/images/select.png') }}");
+        }
+
+        .chosen-container-single .chosen-search input[type="text"] {
+            background: white url("{{ asset('assets/img/chosen-sprite.png')}}") no-repeat 100% -20px;
+            background: url("{{ asset('assets/img/chosen-sprite.png')}}") no-repeat 100% -45px;
+        }
+        .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+          background: url("{{ asset('assets/img/chosen-sprite.png')}}") -38px 1px no-repeat;
+        }
+        .icheckbox_square-green, .iradio_square-green {
+          background: url("{{ asset('assets/img/green1.png')}}") no-repeat;
         }
     </style>
 </head>
