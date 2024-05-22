@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(VatCodeSeeder::class);
         $this->call(AccountTypeSeeder::class);
         $this->call(PaymentTypeSeeder::class);
+        $this->call(AccessLevelSeeder::class);
+        $this->call(GraveSpaceSeeder::class);
+        $this->call(DocumentTypeSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

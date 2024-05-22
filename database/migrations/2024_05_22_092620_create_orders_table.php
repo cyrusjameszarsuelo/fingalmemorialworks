@@ -28,6 +28,7 @@ return new class extends Migration
             $table->longText('special_instructions');
             $table->foreignId('status_id')->constrained();
             $table->foreignId('customer_id')->constrained();
+            $table->foreignId('grave_space_id')->constrained();
             $table->foreignId('created_by');
             $table->timestamps();
             $table->softDeletes();
