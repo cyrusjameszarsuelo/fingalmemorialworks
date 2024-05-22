@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('account_postings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('payment_type_id')->constrained();
+            $table->string('payment');
+            $table->foreignId('account_type_id')->constrained();
+            $table->string('invoice_number');
+            $table->integer('debit');
+            $table->integer('credit');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

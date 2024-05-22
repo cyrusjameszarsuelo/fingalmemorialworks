@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('account_types', function (Blueprint $table) {
+        Schema::create('vat_codes', function (Blueprint $table) {
             $table->id();
+            $table->string('vat_description');
+            $table->float('vat');
+            $table->string('code');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('account_types');
+        Schema::dropIfExists('vat_codes');
     }
 };

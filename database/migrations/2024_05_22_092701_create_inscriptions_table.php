@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained();
+            $table->longText('inscription_details');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

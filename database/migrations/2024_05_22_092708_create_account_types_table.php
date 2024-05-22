@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cemeteries', function (Blueprint $table) {
+        Schema::create('account_types', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cemeteries');
+        Schema::dropIfExists('account_types');
     }
 };
