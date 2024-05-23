@@ -81,7 +81,7 @@
                                 <tbody>
                                     @foreach ($categories as $category)
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>\
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$category->code}}</td>
                                         <td>{{$category->name}}</td>
                                         <td class="popover-cl-pro">

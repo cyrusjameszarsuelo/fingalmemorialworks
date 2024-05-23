@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Hash;
 
 class UserController extends Controller
 {
@@ -22,15 +23,25 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.users.form');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {     
+    //    dd(  $request->password);
+    // $request->password= Hash::make($request->password);
+
+    $request->merge([
+        'password' => Hash::make($request->password),
+    ]);
+   
+    User::create($request->all());
+        // dd($request->all());
+        
+    return redirect('/users');
     }
 
     /**

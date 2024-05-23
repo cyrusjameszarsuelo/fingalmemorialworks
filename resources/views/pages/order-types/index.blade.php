@@ -23,9 +23,7 @@
                                         <select class="selectpicker">
                                             <option>Search Field</option>
                                             <option>Name</option>
-                                            <option>Access Level</option>
-                                            <option>Email</option>
-                                            <option>Branch</option>
+                                            <option>Status</option>
                                             <option>Last Updated</option>
                                         </select>
                                     </div>
@@ -74,7 +72,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
-                                        <th>Active</th>
+                                        <th>Status</th>
+                                        <th>Last Updated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -82,8 +81,9 @@
                                     @foreach ($orderTypes as $orderType)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$orderType->name}}</td>
+                                        <td>{{$orderType->name}}</td>                                       
                                         <td>{{ $orderType->active == '1' ? "Active" : "Inactive" ;}}</td>
+                                        <td>{{$orderType->updated_at}}</td>
                                         <td class="popover-cl-pro">
                                             <a href="users/edit"class="btn btn-primary" data-trigger="hover"
                                                 data-toggle="popover" data-placement="bottom" data-content="Edit"><i

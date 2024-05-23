@@ -3,7 +3,7 @@
 use App\Http\Controllers\AccountTypeController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentTypesController;
+use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\OrderTypeController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\UserController;
@@ -25,14 +25,16 @@ use App\Http\Controllers\OrderController;
 Route::get('/order', [OrderController::class, 'index']);
 Route::get('/order/create/{tab?}', [OrderController::class, 'create']);
 
+Route::get('/',[UserController::class, 'index']);
 
-
-Route::get('users',[UserController::class, 'index']);
-Route::get('users/edit',[UserController::class, 'edit']);
+Route::get('/users',[UserController::class, 'index']);
+Route::get('/users/edit',[UserController::class, 'edit']);
+Route::get('/users/create',[UserController::class, 'create']);
+Route::POST('/users/store',[UserController::class, 'store'])->name('createUser');
 
 Route::get('branches',[BranchController::class, 'index']);
 
-Route::get('document-types',[DocumentTypesController::class, 'index']);
+Route::get('document-types',[DocumentTypeController::class, 'index']);
 
 Route::get('account-types',[AccountTypeController::class, 'index']);
 
