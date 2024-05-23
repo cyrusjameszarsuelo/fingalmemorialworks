@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,8 @@ Route::get('order-types',[OrderTypeController::class, 'index']);
 Route::get('payment-types',[PaymentTypeController::class, 'index']);
 
 Route::get('categories',[CategoryController::class, 'index']);
+
+// Customer
+Route::resource('customer', CustomerController::class);
+
 
