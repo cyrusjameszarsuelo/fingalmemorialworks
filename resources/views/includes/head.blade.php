@@ -64,7 +64,8 @@
   ============================================ -->
   
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
-    <!-- Sweetalert JS
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Sweetalert JS
   ============================================ -->
 
 
