@@ -55,7 +55,12 @@
 <!--  todo JS
             ============================================ -->
 <script src="{{ asset('assets/js/todo/jquery.todo.js') }}"></script>
-
+<!-- plugins JS
+            ============================================ -->
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<!-- main JS
+            ============================================ -->
+<script src="{{ asset('assets/js/main.js') }}"></script>
 <!-- Data Table JS
   ============================================ -->
 <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>
@@ -63,6 +68,13 @@
 <!-- bootstrap select JS
   ============================================ -->
 <script src="{{ asset('assets/js/bootstrap-select/bootstrap-select.js') }}"></script>
+
+<!-- SweetAlert JS
+  ============================================ -->
+
+<script src="  https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js  "></script>
+
+
 <script src="{{ asset('assets/js/chosen/chosen.jquery.js') }}"></script>
 <!-- datapicker JS
   ============================================ -->

@@ -62,6 +62,12 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- modernizr JS
   ============================================ -->
+  
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- Sweetalert JS
+  ============================================ -->
+
+
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <style media="all">
         @font-face {

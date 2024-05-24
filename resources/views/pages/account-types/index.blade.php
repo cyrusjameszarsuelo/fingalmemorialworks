@@ -23,9 +23,7 @@
                                         <select class="selectpicker">
                                             <option>Search Field</option>
                                             <option>Name</option>
-                                            <option>Access Level</option>
-                                            <option>Email</option>
-                                            <option>Branch</option>
+                                            <option>Code</option>
                                             <option>Last Updated</option>
                                         </select>
                                     </div>

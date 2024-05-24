@@ -22,7 +22,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('pages.branches.form');
     }
 
     /**
@@ -30,7 +31,9 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Branch::create($request->all());
+
+        return redirect('/branches');
     }
 
     /**
@@ -44,17 +47,23 @@ class BranchController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Branch $branch)
+    public function edit(Branch $branch, Request $request, String $id )
     {
-        //
+        $branch = Branch::find($id);
+        return view('pages.branches.form')
+            ->with('branch',$branch)
+            ->with('id',$id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Branch $branch, String $id)
     {
-        //
+        $branch = Branch::find($id);
+        $branch->update($request->all());
+
+        return redirect('/branches');
     }
 
     /**

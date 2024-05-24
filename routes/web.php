@@ -29,11 +29,16 @@ Route::get('/order/create/{tab?}', [OrderController::class, 'create']);
 Route::get('/',[UserController::class, 'index']);
 
 Route::get('/users',[UserController::class, 'index']);
-Route::get('/users/edit',[UserController::class, 'edit']);
+Route::get('/users/edit/{id}',[UserController::class, 'edit']);
 Route::get('/users/create',[UserController::class, 'create']);
-Route::POST('/users/store',[UserController::class, 'store'])->name('createUser');
+Route::post('createUser',[UserController::class, 'store'])->name('createUser');
+Route::post('updateUser/{id}',[UserController::class, 'update'])->name('updateUser');
 
 Route::get('branches',[BranchController::class, 'index']);
+Route::get('/branches/create',[BranchController::class, 'create']);
+Route::post('/createBranches',[BranchController::class, 'store'])->name('createBranches');
+Route::get('/branches/edit/{id}',[BranchController::class, 'edit']);
+Route::post('/updateBranches/{id}',[BranchController::class, 'update'])->name('updateBranches');
 
 Route::get('document-types',[DocumentTypeController::class, 'index']);
 

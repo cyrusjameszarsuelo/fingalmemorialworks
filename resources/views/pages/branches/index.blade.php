@@ -5,14 +5,14 @@
             <div class="breadcrumbs-content">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <h3>Orders</h3>
+                        <h3>Branches</h3>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <p class="breadcrumbs-link"><a href="">Dashboard</a> / <b>Orders</b></p>
                     </div>
                 </div>
-                <form>                    
-                    <div class="row" style="margin-top:20px;">                        
+                <form>
+                    <div class="row" style="margin-top:20px;">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="nk-int-mk sl-dp-mn">
                                 <h2>Search:</h2>
@@ -42,12 +42,16 @@
                                 <div>
                                     <div class="col-lg-6">
                                         <div class="header-btn">
-                                            <button class="btn btn-primary btn-icon-notika waves-effect"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
+                                            <button class="btn btn-primary btn-icon-notika waves-effect"><i
+                                                    class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="header-btn">
-                                            <a href="/order/create"><button class="btn btn-primary btn-icon-notika waves-effect"><i class="fa fa-plus-circle" aria-hidden="true"></i> CREATE</button></a>
+                                            <a href="/branches/create"><button type="button"
+                                                    class="btn btn-primary btn-icon-notika waves-effect"><i
+                                                        class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                    CREATE</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,25 +86,25 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($branches as $branch)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$branch->code}}</td>
-                                        <td>{{$branch->name}}</td>
-                                        <td>{{$branch->address1}}</td>
-                                        <td>{{$branch->address1}}</td>
-                                        <td>{{$branch->address1}}</td>
-                                        <td>{{$branch->town}}</td>
-                                        <td>{{$branch->county}}</td>
-                                        <td>{{$branch->phone}}</td>
-                                        <td class="popover-cl-pro">
-                                            <a href="users/edit"class="btn btn-primary" data-trigger="hover"
-                                                data-toggle="popover" data-placement="bottom" data-content="Edit"><i
-                                                    class="fa fa-pencil"></i></a>
-                                            <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                data-placement="bottom" data-content="Delete"><i
-                                                    class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $branch->code }}</td>
+                                            <td>{{ $branch->name }}</td>
+                                            <td>{{ $branch->address1 }}</td>
+                                            <td>{{ $branch->address1 }}</td>
+                                            <td>{{ $branch->address1 }}</td>
+                                            <td>{{ $branch->town }}</td>
+                                            <td>{{ $branch->county }}</td>
+                                            <td>{{ $branch->phone }}</td>
+                                            <td class="popover-cl-pro">
+                                                <a href="branches/edit/{{ $branch->id }}"class="btn btn-primary"
+                                                    data-trigger="hover" data-toggle="popover" data-placement="bottom"
+                                                    data-content="Edit"><i class="fa fa-pencil"></i></a>
+                                                <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
+                                                    data-placement="bottom" data-content="Delete"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -110,4 +114,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        Swal.fire("SweetAlert2 is working!");
+    </script>
+@endsection
+
+@section('page-scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection

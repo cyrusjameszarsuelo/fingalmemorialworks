@@ -91,11 +91,11 @@
                                             <td>{{ $user->firstname }}</td>
                                             <td>{{ $user->lastname }}</td>
                                             <td>{{ $user->username }}</td>
-                                            <td>{{ $user->access_level_id }}</td>
+                                            <td>{{ $user->accessLevel->type}}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->updated_at }}</td>
                                             <td class="popover-cl-pro">
-                                                <a href="users/edit/{{$user->id}}"class="btn btn-primary" data-trigger="hover"
+                                                <a href="users/edit/{{$user->id}}" class="btn btn-primary" data-trigger="hover"
                                                     data-toggle="popover" data-placement="bottom" data-content="Edit"><i
                                                         class="fa fa-pencil"></i></a>
                                                 <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"

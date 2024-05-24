@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
+use App\Models\AccessLevel;
 
 class UserController extends Controller
 {
@@ -14,6 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::All();
+       
         return view('pages.users.index')
             ->with('users', $user);
     }
@@ -23,25 +25,22 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.users.form');
+        $accessLevel =AccessLevel::All();
+        return view('pages.users.form')
+        ->with('accessLevels',$accessLevel);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {     
-    //    dd(  $request->password);
-    // $request->password= Hash::make($request->password);
+    {
+        $request->merge([
+            'password' => Hash::make($request->password),
+        ]);
 
-    $request->merge([
-        'password' => Hash::make($request->password),
-    ]);
-   
-    User::create($request->all());
-        // dd($request->all());
-        
-    return redirect('/users');
+        User::create($request->all());
+        return redirect('/users');
     }
 
     /**
@@ -55,9 +54,16 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(string $id, Request $request)
     {
-        return view('pages.users.form');
+        $accessLevel =AccessLevel::All();
+
+        $user = User::find($id);
+        return view('pages.users.form')
+            ->with('id', $id)
+            ->with('user',$user)
+            ->with('accessLevels',$accessLevel);
+           
     }
 
     /**
@@ -65,7 +71,28 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        
+        $request->validate([
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
+        if($request->password){ 
+            $password = Hash::make($request->passwordd);           
+           
+        }else{
+            $password= $user->password;
+        }
+        $request->merge([
+            'password' => $password,
+        ]);
+        
+        $user->update($request->all());
+        return redirect('/users');
+
+        // dd($id);
+
+
     }
 
     /**
