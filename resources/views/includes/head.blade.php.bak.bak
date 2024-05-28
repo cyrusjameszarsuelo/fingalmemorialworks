@@ -56,9 +56,6 @@
     <!-- datapicker CSS
   ============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/datapicker/datepicker3.css') }}">
-    <!-- summernote CSS
-  ============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/summernote/summernote.css')}}">
     <!-- style CSS
   ============================================ -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -72,7 +69,7 @@
   ============================================ -->
 
 
-    <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <style media="all">
         @font-face {
             font-family: 'notika-icon';
@@ -91,17 +88,14 @@
         }
 
         .chosen-container-single .chosen-search input[type="text"] {
-            background: white url("{{ asset('assets/img/chosen-sprite.png') }}") no-repeat 100% -20px;
-            background: url("{{ asset('assets/img/chosen-sprite.png') }}") no-repeat 100% -45px;
+            background: white url("{{ asset('assets/img/chosen-sprite.png')}}") no-repeat 100% -20px;
+            background: url("{{ asset('assets/img/chosen-sprite.png')}}") no-repeat 100% -45px;
         }
-
         .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
-            background: url("{{ asset('assets/img/chosen-sprite.png') }}") -38px 1px no-repeat;
+          background: url("{{ asset('assets/img/chosen-sprite.png')}}") -38px 1px no-repeat;
         }
-
-        .icheckbox_square-green,
-        .iradio_square-green {
-            background: url("{{ asset('assets/img/green1.png') }}") no-repeat;
+        .icheckbox_square-green, .iradio_square-green {
+          background: url("{{ asset('assets/img/green1.png')}}") no-repeat;
         }
     </style>
 </head>

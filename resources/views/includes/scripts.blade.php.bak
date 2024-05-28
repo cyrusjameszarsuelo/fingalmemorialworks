@@ -56,7 +56,12 @@
 <!--  todo JS
             ============================================ -->
 <script src="{{ asset('assets/js/todo/jquery.todo.js') }}"></script>
-
+<!-- plugins JS
+            ============================================ -->
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<!-- main JS
+            ============================================ -->
+<script src="{{ asset('assets/js/main.js') }}"></script>
 <!-- Data Table JS
   ============================================ -->
 <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>
@@ -76,10 +81,6 @@
   ============================================ -->
 <script src="{{ asset('assets/js/datapicker/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('assets/js/datapicker/datepicker-active.js') }}"></script>
-   <!--  summernote JS
-		============================================ -->
-    <script src="{{ asset('assets/js/summernote/summernote-updated.min.js')}}"></script>
-    <script src="{{ asset('assets/js/summernote/summernote-active.js')}}"></script>
 <!-- plugins JS
             ============================================ -->
 <script src="{{ asset('assets/js/plugins.js') }}"></script>

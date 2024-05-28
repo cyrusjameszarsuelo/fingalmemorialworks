@@ -3589,7 +3589,7 @@ textarea.auto-size {
 .nk-block:not(.toggled){
     display:none;
 }
-/* .nk-block.toggled{
+.nk-block.toggled{
     -webkit-animation-name:rollIn;
     animation-name:rollIn;
     -webkit-animation-duration:.9s;
@@ -3597,7 +3597,7 @@ textarea.auto-size {
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
     z-index:10;
-} */
+}
 .nk-block:not(.lc-block-alt) .nk-form{
     padding:40px;
 }
@@ -3652,7 +3652,7 @@ textarea.auto-size {
     width:100%;
 }
 .nk-navigation a[data-ma-block="#l-register"]:hover{
-    width:115px;
+    width:95px;
 }
 .nk-navigation a[data-ma-block="#l-forget-password"]:hover{
     width:147px;

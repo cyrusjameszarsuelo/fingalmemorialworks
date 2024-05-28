@@ -34,7 +34,7 @@ Route::get("/", function(){
 Route::get('/order', [OrderController::class, 'index']);
 Route::get('/order/create/{tab?}', [OrderController::class, 'create']);
 
-// Route::get('/',[UserController::class, 'index']);
+Route::get('/',[UserController::class, 'index']);
 
 Route::get('/users',[UserController::class, 'index']);
 Route::get('/users/edit/{id}',[UserController::class, 'edit']);

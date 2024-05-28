@@ -26,14 +26,14 @@ class OrderController extends Controller
             'job-details',
             'inscription-details',
             'accounts-posting',
-            'document',
+            'photos',
         ];
         $icons = [
             'fa-file-text-o',
             'fa-folder-open-o',
             'fa-text-height',
             'fa-calculator',
-            'fa-file-o',
+            'fa-picture-o',
         ];
         $url = 'pages.order.tabs.' . $tab;
         switch ($tab) {
@@ -57,7 +57,7 @@ class OrderController extends Controller
                     ->withTabs($tabs)
                     ->withIcons($icons);
                 break;
-            case 'document':
+            case 'photos':
                 return view($url)
                     ->withTabs($tabs)
                     ->withIcons($icons);

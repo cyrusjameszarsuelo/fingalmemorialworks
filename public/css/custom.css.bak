@@ -50,7 +50,6 @@ h1.text-logo {
     padding: 10px;
 }
 /* END BREADCRUMBS */
-/* FORM/FIELDS */
 .datepicker-days .table-condensed thead tr {
     background: var(--dark-primary);
     color: #fff;
@@ -195,38 +194,4 @@ ul.order-tabs li.active a, .order-tabs li:focus a, .order-tabs li:hover a{
     border: 1px solid #cdcdcd;
     padding: 30px 20px 20px 20px;
     border-radius: 5px;
-}
-
-/* END JOB DETAILS */
-
-/* DOCUMENT */
-.document-field {
-    border: 1px solid #cdcdcd;
-    padding: 30px 20px 20px 20px;
-    border-radius: 5px;
-}
-
-/* END DOCUMENT */
-
-/* LOGIN */
-.login-title {
-    color:#fff;
-    font-size:40px;
-}
-.login-desc {
-    color:#fff;
-}
-/* END LOGIN */
-
-/* CONTACT */
-.contact-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height:100vh;
-    text-align:center;
-    background-color:#8981d8;
-}
-.contact-content:before {
-    
 }
