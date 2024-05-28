@@ -78,17 +78,25 @@
                                 <tbody>
                                     @foreach ($paymentTypes as $paymentType)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td id="tr{{$paymentType->id}}">{{ $loop->iteration }}</td>
                                             <td>{{ $paymentType->name }}</td>
                                             <td>{{ $paymentType->updated_at }}</td>
                                             <td class="popover-cl-pro">
                                                 <a href="payment-types/edit/{{ $paymentType->id }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
                                                     data-content="Edit"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-danger deleteDataInfo" data-trigger="hover"
-                                                    data-toggle="popover" data-placement="bottom"
-                                                    data-content="{{$paymentType}}"
-                                                    data-id="{{ $paymentType->id }}"><i class="fa fa-trash"></i></button>
+                                                <button 
+                                                        data-name="{{ $paymentType->name }}"
+                                                        data-url="deletePaymentType"
+                                                        data-id="{{ $paymentType->id }}"
+                                                        class="btn btn-danger deleteDataInfo" 
+                                                        type="button" 
+                                                        data-trigger="hover"
+                                                        data-toggle="popover" 
+                                                        data-placement="bottom"
+                                                        >
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -115,5 +123,6 @@
 @endsection
 
 @section('page-scripts')
-    <script src="{{ asset('js/paymentTypes.js') }}"></script>
+    <!-- <script src="{{ asset('js/paymentTypes.js') }}"></script> -->
+    <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentType;
 use Illuminate\Http\Request;
-
+use Auth;
+use Response;
 class PaymentTypeController extends Controller
 {
     /**
@@ -60,8 +61,15 @@ class PaymentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PaymentType $paymentType)
+    public function destroy(Request $request)
     {
-        //
+        $id                                 = $request->id;
+        $paymentType = $paymentTypeData     = PaymentType::findOrFail($id);
+        // $paymentType->deleted_by            = Auth::id();
+
+        // $paymentType->save();
+        $paymentType->delete();
+        return Response::json($paymentTypeData);
+
     }
 }

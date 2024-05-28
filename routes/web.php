@@ -61,13 +61,14 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::get('order-types/edit/{id}',[OrderTypeController::class, 'edit']);
 	Route::post('createOrderType',[OrderTypeController::class, 'store'])->name('createOrderType');
 	Route::put('updateOrderType/{id}',[OrderTypeController::class,'update'])->name('updateOrderType');
+	Route::delete('deleteOrderType',[OrderTypeController::class,'destroy'])->name('deleteOrderType');
 	
 	Route::get('payment-types',[PaymentTypeController::class, 'index']);
 	Route::get('payment-types/create',[PaymentTypeController::class, 'create']);
 	Route::get('payment-types/edit/{id}',[PaymentTypeController::class, 'edit']);
 	Route::post('createPaymentType',[PaymentTypeController::class, 'store'])->name('createPaymentType');
 	Route::put('updatePaymentType/{id}',[PaymentTypeController::class,'update'])->name('updatePaymentType');
-	Route::post('deletePaymentType',[PaymentTypeController::class,'destroy'])->name('deletePaymentType');
+	Route::delete('deletePaymentType',[PaymentTypeController::class,'destroy'])->name('deletePaymentType');
 	
 	Route::get('categories',[CategoryController::class, 'index']);
 	Route::get('categories/create',[CategoryController::class, 'create']);

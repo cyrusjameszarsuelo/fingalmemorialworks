@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\OrderType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
+use Response;
 class OrderTypeController extends Controller
 {
     /**
@@ -73,9 +73,13 @@ class OrderTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OrderType $orderType)
+    public function destroy(Request $request)
     {
-        //
+        $id                             = $request->id;
+        $orderType = $orderTypeData     = OrderType::findOrFail($id);
+
+        $orderType->delete();
+        return Response::json($orderTypeData);
     }
 
     public function formRule($id = false){
