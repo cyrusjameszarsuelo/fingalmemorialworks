@@ -91,13 +91,13 @@
                                             <td>{{ $user->firstname }}</td>
                                             <td>{{ $user->lastname }}</td>
                                             <td>{{ $user->username }}</td>
-                                            <td>{{ $user->accessLevel->type}}</td>
+                                            <td>{{ $user->accessLevel->type }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->updated_at }}</td>
                                             <td class="popover-cl-pro">
-                                                <a href="users/edit/{{$user->id}}" class="btn btn-primary" data-trigger="hover"
-                                                    data-toggle="popover" data-placement="bottom" data-content="Edit"><i
-                                                        class="fa fa-pencil"></i></a>
+                                                <a href="users/edit/{{ $user->id }}" class="btn btn-primary"
+                                                    data-trigger="hover" data-toggle="popover" data-placement="bottom"
+                                                    data-content="Edit"><i class="fa fa-pencil"></i></a>
                                                 <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
                                                     data-placement="bottom" data-content="Delete"><i
                                                         class="fa fa-trash"></i></button>
@@ -112,4 +112,15 @@
             </div>
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
 @endsection

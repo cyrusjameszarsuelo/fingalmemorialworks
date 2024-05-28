@@ -13,23 +13,28 @@
                 </div>
                 <form>
                     <div class="row" style="margin-top:20px;">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <div class="nk-int-mk sl-dp-mn">
                                 <h2>Search:</h2>
                             </div>
                             <div class="bootstrap-select fm-cmp-mg">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <select class="selectpicker">
                                             <option>Search Field</option>
-                                            <option>Company Name</option>
+                                            <option>Code</option>
                                             <option>Branch Name</option>
+                                            <option>Address 1</option>
+                                            <option>Address 2</option>
+                                            <option>Address 3</option>
                                             <option>Town</option>
                                             <option>County</option>
                                             <option>Post Code</option>
+                                            <option>Last Updated</option>
+
                                         </select>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-8">
                                         <div class="nk-int-st">
                                             <input type="text" class="form-control" placeholder="Search">
                                         </div>
@@ -81,6 +86,7 @@
                                         <th>Town</th>
                                         <th>County</th>
                                         <th>Post Code</th>
+                                        <th>Last Updated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -96,6 +102,7 @@
                                             <td>{{ $branch->town }}</td>
                                             <td>{{ $branch->county }}</td>
                                             <td>{{ $branch->phone }}</td>
+                                            <td>{{ $branch->updated_at }}</td>
                                             <td class="popover-cl-pro">
                                                 <a href="branches/edit/{{ $branch->id }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
@@ -115,11 +122,14 @@
         </div>
     </div>
 
-    <script>
-        Swal.fire("SweetAlert2 is working!");
-    </script>
-@endsection
-
-@section('page-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
 @endsection

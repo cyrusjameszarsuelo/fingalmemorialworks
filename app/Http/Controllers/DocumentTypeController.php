@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DocumentType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DocumentTypeController extends Controller
 {
@@ -12,7 +13,9 @@ class DocumentTypeController extends Controller
      */
     public function index()
     {
-        return view('pages.document-types.index');
+        $documentType = DocumentType::All();
+        return view('pages.document-types.index')
+            ->with('documentTypes', $documentType);
     }
 
     /**
@@ -20,7 +23,8 @@ class DocumentTypeController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('pages.document-types.form');
     }
 
     /**
@@ -28,7 +32,10 @@ class DocumentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(self::formRule());
+        DocumentType::create($request->all());
+        return redirect('/document-types')
+            ->with('success', 'Created Successfully!');
     }
 
     /**
@@ -42,17 +49,24 @@ class DocumentTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DocumentType $documentType)
+    public function edit(DocumentType $documentType, string $id)
     {
-        //
+        $documentType = DocumentType::find($id);
+        return view('pages.document-types.form')
+            ->with('id', $id)
+            ->with('documentType', $documentType);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DocumentType $documentType)
+    public function update(Request $request, DocumentType $documentType, string $id)
     {
-        //
+        $request->validate(self::formRule($id));
+        $documentType = DocumentType::find($id);
+        $documentType->update($request->all());
+        return redirect('/document-types')
+            ->with('success', 'Updated Successfully!');
     }
 
     /**
@@ -61,5 +75,13 @@ class DocumentTypeController extends Controller
     public function destroy(DocumentType $documentType)
     {
         //
+    }
+
+    public function formRule($id = false)
+    {
+        return [
+            "name" => ['required', 'string', Rule::unique('document_types')->ignore($id ? $id : "")]
+
+        ];
     }
 }

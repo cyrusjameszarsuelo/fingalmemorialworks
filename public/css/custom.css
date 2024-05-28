@@ -156,6 +156,17 @@ h4.title-header::after {
     
 }
 
+.form-btn{
+    /* width: 15%; */
+    margin: 10px auto;
+    padding: 10px 40px ;}
+.form-cancel-btn{
+    background-color:#8981d8 ;
+    /* border:3px solid #8981d8 */
+
+
+
+
 /* TABS */
 .nav-tabs {
     border-bottom: none;

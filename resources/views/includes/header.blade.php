@@ -123,7 +123,7 @@
                             <li><a href="/order-report">Order Report</a></li>
                         </ul>
                     </div>
-                    <div id="admin" class="tab-pane notika-tab-menu-bg animated flipInX {{ Request::is('users','users/*','branches','branches/*','document-types','document-types/*',) ? 'active' : '' }}">
+                    <div id="admin" class="tab-pane notika-tab-menu-bg animated flipInX {{ Request::is('users','users/*','branches','branches/*','document-types','document-types/*','branches','branches/*','account-types','account-types/*','categories','categories/*','order-types','order-types/*','payment-types','payment-types/*',) ? 'active' : '' }}">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="/users">Users</a></li>
                             <li><a href="/branches">Branches</a></li>

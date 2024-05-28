@@ -5,31 +5,28 @@
             <div class="breadcrumbs-content">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <h3>Payment Type</h3>
+                        <h3>Payment Types</h3>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <p class="breadcrumbs-link"><a href="">Dashboard</a> / <b>Payment Type </b></p>
+                        <p class="breadcrumbs-link"><a href="">Dashboard</a> / <b>Payment Types </b></p>
                     </div>
                 </div>
                 <form>
                     <div class="row" style="margin-top:20px;">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <div class="nk-int-mk sl-dp-mn">
                                 <h2>Search:</h2>
                             </div>
                             <div class="bootstrap-select fm-cmp-mg">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <select class="selectpicker">
                                             <option>Search Field</option>
                                             <option>Name</option>
-                                            <option>Access Level</option>
-                                            <option>Email</option>
-                                            <option>Branch</option>
                                             <option>Last Updated</option>
                                         </select>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-8">
                                         <div class="nk-int-st">
                                             <input type="text" class="form-control" placeholder="Search">
                                         </div>
@@ -48,7 +45,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="header-btn">
-                                            <a href="/order/create"><button
+                                            <a href="/payment-types/create"><button type="button"
                                                     class="btn btn-primary btn-icon-notika waves-effect"><i
                                                         class="fa fa-plus-circle" aria-hidden="true"></i>
                                                     CREATE</button></a>
@@ -74,25 +71,28 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
+                                        <th>Last Updated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($paymentTypes as $paymentType)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$paymentType->name}}</td>
-                                        <td class="popover-cl-pro">
-                                            <a href="users/edit"class="btn btn-primary" data-trigger="hover"
-                                                data-toggle="popover" data-placement="bottom" data-content="Edit"><i
-                                                    class="fa fa-pencil"></i></a>
-                                            <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                data-placement="bottom" data-content="Delete"><i
-                                                    class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $paymentType->name }}</td>
+                                            <td>{{ $paymentType->updated_at }}</td>
+                                            <td class="popover-cl-pro">
+                                                <a href="payment-types/edit/{{ $paymentType->id }}"class="btn btn-primary"
+                                                    data-trigger="hover" data-toggle="popover" data-placement="bottom"
+                                                    data-content="Edit"><i class="fa fa-pencil"></i></a>
+                                                <button type="button" class="btn btn-danger deleteDataInfo" data-trigger="hover"
+                                                    data-toggle="popover" data-placement="bottom"
+                                                    data-content="{{$paymentType}}"
+                                                    data-id="{{ $paymentType->id }}"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                   
+
                                 </tbody>
                             </table>
                         </div>
@@ -101,4 +101,19 @@
             </div>
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    @endif
+@endsection
+
+@section('page-scripts')
+    <script src="{{ asset('js/paymentTypes.js') }}"></script>
 @endsection

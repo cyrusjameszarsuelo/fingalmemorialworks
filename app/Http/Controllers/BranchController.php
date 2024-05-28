@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BranchController extends Controller
 {
@@ -22,8 +23,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        
         return view('pages.branches.form');
+      
     }
 
     /**
@@ -31,9 +32,11 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(self::formRule());
         Branch::create($request->all());
 
-        return redirect('/branches');
+        return redirect('/branches')
+            ->with('success','Created Successfully!');
     }
 
     /**
@@ -60,10 +63,12 @@ class BranchController extends Controller
      */
     public function update(Request $request, Branch $branch, String $id)
     {
+        $request->validate(self::formRule($id));
         $branch = Branch::find($id);
         $branch->update($request->all());
 
-        return redirect('/branches');
+        return redirect('/branches')
+            ->with('success','Updated Successfully!');
     }
 
     /**
@@ -72,5 +77,18 @@ class BranchController extends Controller
     public function destroy(Branch $branch)
     {
         //
+    }
+    public function formRule($id = false){
+        return [
+            "code"    => ['required','string', Rule::unique('branches')->ignore($id ? $id : "")],
+            "name"   => ['required','string'],
+            "address1"   => ['required','string'],
+            "address2"   => ['required','string'],
+            "address3"   => ['required','string'],
+            "postcode"   => ['required','string'],
+            "town"   => ['required','string'],
+            "county"   => ['required','string'],
+            "phone"   => ['required','string'],
+        ];
     }
 }

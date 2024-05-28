@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
 use App\Models\AccessLevel;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -35,12 +36,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(self::formRule());
+        
         $request->merge([
             'password' => Hash::make($request->password),
         ]);
 
         User::create($request->all());
-        return redirect('/users');
+        return redirect('/users')
+            ->with('success','Created Successfully!');
     }
 
     /**
@@ -71,11 +75,10 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
-        
-        $request->validate([
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ]);
+
+       
+
+        $user = User::find($id);        
 
         if($request->password){ 
             $password = Hash::make($request->passwordd);           
@@ -86,12 +89,12 @@ class UserController extends Controller
         $request->merge([
             'password' => $password,
         ]);
+
+        $request->validate(self::formRule($id));
         
         $user->update($request->all());
-        return redirect('/users');
-
-        // dd($id);
-
+        return redirect('/users')
+            ->with('success','Updated Successfully!');
 
     }
 
@@ -101,5 +104,15 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function formRule($id = false){
+        return [
+            "firstname"    => ['required','string'],
+            "lastname"   => ['required','string'],
+            "username"   => ['required','string',Rule::unique('users')->ignore($id ? $id : "")],
+            "access_level_id"   => ['required','integer'],
+            "email"   => ['required','string',Rule::unique('users')->ignore($id ? $id : "")],
+            "password"   => ['required','string'],
+        ];
     }
 }

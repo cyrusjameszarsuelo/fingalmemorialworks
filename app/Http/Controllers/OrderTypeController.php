@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OrderType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OrderTypeController extends Controller
 {
@@ -22,7 +23,8 @@ class OrderTypeController extends Controller
      */
     public function create()
     {
-        //
+     
+        return view('pages.order-types.form');
     }
 
     /**
@@ -30,7 +32,10 @@ class OrderTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(self::formRule());
+        OrderType::create($request->all());
+        return redirect('/order-types')
+            ->with('success','Created Successfully!');
     }
 
     /**
@@ -44,17 +49,25 @@ class OrderTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OrderType $orderType)
+    public function edit(OrderType $orderType,String $id)
     {
-        //
+        $orderType = OrderType::find($id);
+        return view('pages.order-types.form')
+        ->with('id',$id)
+        ->with('orderType',$orderType);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, OrderType $orderType)
+    public function update(Request $request, OrderType $orderType,String $id)
     {
-        //
+        $request->validate(self::formRule($id));
+
+        $orderType = OrderType::find($id);
+        $orderType->update($request->all());
+        return redirect('/order-types')
+            ->with('success','Updated Successfully!');
     }
 
     /**
@@ -64,4 +77,12 @@ class OrderTypeController extends Controller
     {
         //
     }
+
+    public function formRule($id = false){
+        return [
+            "name"    => ['required','string', Rule::unique('order_types')->ignore($id ? $id : "")],
+            "active"   => ['required','Integer']
+        ];
+    }
+
 }

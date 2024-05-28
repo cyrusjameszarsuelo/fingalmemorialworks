@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 
 class CategoryController extends Controller
 {
@@ -22,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.categories.form');
     }
 
     /**
@@ -30,7 +32,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(self::formRule());
+        Category::create($request->all());
+        return redirect('/categories')
+             ->with('success','Created Successfully!');
     }
 
     /**
@@ -44,17 +49,24 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Category $category,String $id)
     {
-        //
+        $category = Category::find($id);
+        return view('pages.categories.form')
+            ->with('id',$id)
+            ->with('category',$category);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category,String $id)
     {
-        //
+        $request->validate(self::formRule($id));
+            $category = Category::find($id);
+            $category->update($request->all());
+            return redirect('/categories')
+                ->with('success','Updated Successfully!');
     }
 
     /**
@@ -63,5 +75,11 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+    public function formRule($id = false){
+        return [
+            "code"    => ['required','string', Rule::unique('categories')->ignore($id ? $id : "")],
+            "name"   => ['required','string']
+        ];
     }
 }
