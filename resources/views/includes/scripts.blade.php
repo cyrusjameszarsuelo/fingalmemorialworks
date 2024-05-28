@@ -56,12 +56,7 @@
 <!--  todo JS
             ============================================ -->
 <script src="{{ asset('assets/js/todo/jquery.todo.js') }}"></script>
-<!-- plugins JS
-            ============================================ -->
-<script src="{{ asset('assets/js/plugins.js') }}"></script>
-<!-- main JS
-            ============================================ -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+
 <!-- Data Table JS
   ============================================ -->
 <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>

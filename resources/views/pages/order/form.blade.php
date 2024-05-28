@@ -21,13 +21,11 @@
                             </div>
                             <div class="bootstrap-select fm-cmp-mg" style="margin-bottom:20px;">
                                 <label>Type:</label>
-                                <select class="selectpicker">
-                                    <option>Monumental</option>
-                                    <option>Cariska</option>
-                                    <option>Cheriska</option>
-                                    <option>Malias</option>
-                                    <option>Kamines</option>
-                                    <option>Austranas</option>
+                                <select class="selectpicker" name="order_type">
+                                    @foreach ($orderTypes as $orderType)
+                                        <option value="{{$orderType->id}}">{{$orderType->name}}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
                         </div>
@@ -43,12 +41,9 @@
                             <div class="bootstrap-select fm-cmp-mg" style="margin-bottom:20px;">
                                 <label>Branch:</label>
                                 <select class="selectpicker">
-                                    <option>Fingal</option>
-                                    <option>Cariska</option>
-                                    <option>Cheriska</option>
-                                    <option>Malias</option>
-                                    <option>Kamines</option>
-                                    <option>Austranas</option>
+                                    @foreach ($branches as $branch)
+                                        <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -108,10 +103,10 @@
                                                     <li><a data-toggle="tab" href="#photos"><i class="fa fa-picture-o"
                                                                 aria-hidden="true"></i> Photos</a></li> --}}
 
-                                                @foreach ($tabs as $tab)
+                                                @foreach ($tabs as $key => $tab)
                                                     <li class="{{ $tab === Request::segment(3) ? 'active' : '' }}"><a
                                                             role="tab" href="{{ url('order/create/' . $tab) }}"><i
-                                                                class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                                class="fa {{ $icons[$key] }}" aria-hidden="true"></i>
                                                             {{ str_replace('-', ' ', ucfirst($tab)) }}</a></li>
                                                 @endforeach
                                             </ul>

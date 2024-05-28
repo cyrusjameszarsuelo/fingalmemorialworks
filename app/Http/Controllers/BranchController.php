@@ -23,6 +23,7 @@ class BranchController extends Controller
      */
     public function create()
     {
+        
         return view('pages.branches.form');
       
     }

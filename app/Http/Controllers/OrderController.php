@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
+use App\Models\OrderType;
+use App\Models\Branch;
+use App\Models\Cemetery;
+use App\Models\Source;
+use App\Models\Category;
+use App\Models\GraveSpace;
+use App\Models\Title;
+
 class OrderController extends Controller
 {
     /**
@@ -36,31 +44,55 @@ class OrderController extends Controller
             'fa-file-o',
         ];
         $url = 'pages.order.tabs.' . $tab;
+
+        $orderTypes = OrderType::All();
+        $branches = Branch::All();
+        $cemeteries = Cemetery::All();
+        $sources = Source::All();
+        $categories = Category::All();
+        $graveSpaces = GraveSpace::All();
+        $titles = Title::All();
+
         switch ($tab) {
             case 'general-details':
                 return view($url)
                     ->withTabs($tabs)
-                    ->withIcons($icons);
+                    ->withIcons($icons)
+                    ->withOrderTypes($orderTypes)
+                    ->withBranches($branches)
+                    ->withCemeteries($cemeteries)
+                    ->withSources($sources)
+                    ->withCategories($categories)
+                    ->withGraveSpaces($graveSpaces)
+                    ->withTitles($titles);
                 break;
             case 'job-details':
                 return view($url)
                     ->withTabs($tabs)
-                    ->withIcons($icons);
+                    ->withIcons($icons)
+                    ->withOrderTypes($orderTypes)
+                    ->withBranches($branches);
                 break;
             case 'inscription-details':
                 return view($url)
                     ->withTabs($tabs)
-                    ->withIcons($icons);
+                    ->withIcons($icons)
+                    ->withOrderTypes($orderTypes)
+                    ->withBranches($branches);
                 break;
             case 'accounts-posting':
                 return view($url)
                     ->withTabs($tabs)
-                    ->withIcons($icons);
+                    ->withIcons($icons)
+                    ->withOrderTypes($orderTypes)
+                    ->withBranches($branches);
                 break;
             case 'document':
                 return view($url)
                     ->withTabs($tabs)
-                    ->withIcons($icons);
+                    ->withIcons($icons)
+                    ->withOrderTypes($orderTypes)
+                    ->withBranches($branches);
                 break;
             default:
                 break;
@@ -73,7 +105,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(self::formRule());
+        Order::create($request->all());
+        return redirect('/order')
+            ->with('success','Created Successfully!');
     }
 
     /**
