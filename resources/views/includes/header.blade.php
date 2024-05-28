@@ -9,6 +9,7 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="header-top-menu">
                     <ul class="nav navbar-nav notika-top-nav">
+                        <li>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="fa fa-user"></i></span></a>
                             <div role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
                                 <div class="hd-message-info">
@@ -22,7 +23,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{ url('/logout') }}">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img chat-img">
                                                 <i class="fa fa-sign-out"></i>

@@ -10,29 +10,34 @@
             <h1 class="login-title">FINGAL MEMORIALS LTD</h1>
             <p class="login-desc">Computer Software designed by Indigo 21, Ltd. for FINGAL MEMORIALS LTD</p>
             <p></p>
-            <form>
+            <form action="{{route('authsubmit')}}" method="POST">
                 <div class="nk-form">
+                    @csrf
+                    @if($errors->any())
+                        <h4>{{$errors->first()}}</h4>
+                    @endif
                     <div class="input-group">
                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control" placeholder="Username" />
+                            <input type="text" class="form-control" name="username" placeholder="Username" />
                         </div>
                     </div>
                     <div class="input-group mg-t-15">
                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                         <div class="nk-int-st">
-                            <input type="password" class="form-control" placeholder="Password" />
+                            <input type="password" class="form-control" name="password" placeholder="Password" />
                         </div>
                     </div>
                     <div class="row mt-20">
                         <div class="col-md-12 text-center">
                             <div class="form-btn">
-                                <button class="btn btn-primary btn-icon-notika waves-effect">Login</button>
+                                <button class="btn btn-primary btn-icon-notika waves-effect" type="submit">Login</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
+
             <div class="nk-navigation nk-lg-ic">
                 <a href="/forgot-password" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"><i class="fa fa-question"></i>
                     <span>Forgot Password</span></a>
