@@ -1,5 +1,16 @@
 @extends ('main')
 @section('content')
+<style>
+    .pwd-restriction-checked {
+        list-style: none;
+    }
+
+    .pwd-restriction-checked:before {
+        content: '?';
+        padding-right: 10px;
+    }
+    
+</style>
     <div class="breadcrumbs">
         <div class="container">
             <div class="breadcrumbs-content">
@@ -37,7 +48,7 @@
 
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>First Name</label>
-                                    <input type="text" name="firstname" id="firstname" class="form-control"
+                                    <input type="text" name="firstname" id="firstname" class="form-control "
                                         value="{{ isset($user) ? $user->firstname : '' }}" placeholder="First Name">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
@@ -71,40 +82,37 @@
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" id="basic-default-password" class="form-control" placeholder="Password" >
+                                    <span class="input-group-text cursor-pointer" id="basic-default-password3"><i
+                                        class="bx bx-hide"></i></span>
+                                </div>
+                                <div class="alert alert-warning"  id="password_requirements" hidden>
+                                    <li id="pwd-restriction-length"> Be between 8-16 characters in length</li>
+                                    <li id="pwd-restriction-upperlower">Contain at least 1 lowercase and 1 uppercase letter</li>
+                                    <li id="pwd-restriction-number">Contain at least 1 number (0–9)</li>
+                                    <li id="pwd-restriction-special">Contain at least 1 special character (!@#$%^&()'[]"?+-/*)</li>
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Confirm Password</label>
-                                    <input type="password" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="basic-default-password-confirm" placeholder="Confirm Password">
                                 </div>
+                                <div class="alert alert-warning" id="confirm_password_div" hidden>
+                                    <ul>
+                                        <li id="pwd-restriction-length"> Please enter the password again.</li>
+                                    </ul>
+                                </div>
+                                    
                             </div>
                         </div>
                         <div class="row mt-20">
                             <div class="col-md-12 text-center ">
-                                <button type="button"
+                                <a href="/users"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
-                                    Cancel</button>
+                                    Cancel</a>
                                 <button type="submit"
-                                    class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($id) ? 'Update' : 'Create' }}</button>
+                                    class="btn btn-primary btn-icon-notika waves-effect form-btn " id="submit">{{ isset($id) ? 'Update' : 'Create' }}</button>
 
                             </div>
-                            {{-- <div class="row">
-                                    <div>
-                                        <div class="col-lg-6">
-                                            <div class="form-btn">
-                                                <button class="btn btn-primary btn-icon-notika waves-effect"><i
-                                                    class="fa fa-plus-circle" aria-hidden="true"></i> Create</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-btn">
-                                                <a href="/users/create"><button type= "button"
-                                                        class="btn btn-primary btn-icon-notika waves-effect">
-                                                        Cancel</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                         </div>
                 </div>
                 </form>
@@ -112,4 +120,8 @@
         </div>
     </div>
     </div>
+@endsection
+
+@section('page-scripts')
+    <script src="{{ asset('js/users.js') }}"></script>
 @endsection
