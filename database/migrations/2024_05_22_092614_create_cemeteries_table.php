@@ -23,8 +23,11 @@ return new class extends Migration
             $table->string('county')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('group')->nullable();
-            $table->string('area')->nullable();
+            $table->foreignId('cemetery_group_id')->constrained();
+            $table->foreignId('cemetery_area_id')->constrained();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
