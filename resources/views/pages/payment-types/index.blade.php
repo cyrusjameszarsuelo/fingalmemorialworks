@@ -123,6 +123,5 @@
 @endsection
 
 @section('page-scripts')
-    <!-- <script src="{{ asset('js/paymentTypes.js') }}"></script> -->
     <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection

@@ -93,7 +93,7 @@
                                 <tbody>
                                     @foreach ($branches as $branch)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td id="tr{{$branch->id}}" >{{ $loop->iteration }}</td>
                                             <td>{{ $branch->code }}</td>
                                             <td>{{ $branch->name }}</td>
                                             <td>{{ $branch->address1 }}</td>
@@ -107,9 +107,16 @@
                                                 <a href="branches/edit/{{ $branch->id }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
                                                     data-content="Edit"><i class="fa fa-pencil"></i></a>
-                                                <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                    data-placement="bottom" data-content="Delete"><i
-                                                        class="fa fa-trash"></i></button>
+                                                <button 
+                                                    data-name="{{ $branch->name }}" 
+                                                    data-url="deleteBranches"
+                                                    data-id="{{ $branch->id }}" 
+                                                    class="btn btn-danger deleteDataInfo"
+                                                    type="button" data-trigger="hover" 
+                                                    data-toggle="popover"
+                                                    data-placement="bottom">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -132,4 +139,10 @@
             });
         </script>
     @endif
+@endsection
+
+
+
+@section('page-scripts')
+    <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection

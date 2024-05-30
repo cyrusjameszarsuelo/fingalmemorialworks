@@ -38,16 +38,16 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control"
-                                        value="{{ isset($paymentType) ? $paymentType->name : '' }}" placeholder="Town">
+                                        value="{{ isset($paymentType) ? $paymentType->name : old('name') }}" placeholder="Town">
                                 </div>
 
                             </div>
                         </div>
                         <div class="row mt-20">
                             <div class="col-md-12 text-center ">
-                                <button type="button"
+                                <a href="/document-types"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
-                                    Cancel</button>
+                                    Cancel</a>
                                 <button type="submit"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($id) ? 'Update' : 'Create' }}</button>
 

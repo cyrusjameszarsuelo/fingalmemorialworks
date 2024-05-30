@@ -38,7 +38,7 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control"
-                                        value="{{ isset($orderType) ? $orderType->name : '' }}" placeholder="Town">
+                                        value="{{ isset($orderType) ? $orderType->name : old('name') }}" placeholder="Town">
                                 </div>
                                 <div class="bootstrap-select fm-cmp-mg" style="margin-bottom:20px;">
                                     <label>Access Level</label>
@@ -58,9 +58,9 @@
                         </div>
                         <div class="row mt-20">
                             <div class="col-md-12 text-center ">
-                                <button type="button"
+                                <a href="/order-types"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
-                                    Cancel</button>
+                                    Cancel</a>
                                 <button type="submit"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($id) ? 'Update' : 'Create' }}</button>
 

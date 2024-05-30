@@ -23,7 +23,6 @@ use App\Http\Controllers\CustomerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::group(['middleware'=> 'auth'], function(){
 
    Route::get('/order', [OrderController::class, 'index']);
@@ -42,12 +41,14 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::get('/branches/edit/{id}',[BranchController::class, 'edit']);
 	Route::post('/createBranches',[BranchController::class, 'store'])->name('createBranches');
 	Route::put('/updateBranches/{id}',[BranchController::class, 'update'])->name('updateBranches');
+	Route::delete('deleteBranches',[BranchController::class,'destroy'])->name('deleteBranches');
 	
 	Route::get('document-types',[DocumentTypeController::class, 'index']);
 	Route::get('document-types/create',[DocumentTypeController::class, 'create']);
 	Route::get('document-types/edit/{id}',[DocumentTypeController::class, 'edit']);
 	Route::post('createDocumentType',[DocumentTypeController::class, 'store'])->name('createDocumentType');
 	Route::put('updateDocumentType/{id}',[DocumentTypeController::class, 'update'])->name('updateDocumentType');
+	Route::delete('deleteDocumenttType',[DocumentTypeController::class, 'destroy'])->name('deleteDocumenttType');
 	
 	
 	Route::get('account-types',[AccountTypeController::class, 'index']);
@@ -55,6 +56,7 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::get('account-types/edit/{id}',[AccountTypeController::class, 'edit']);
 	Route::post('createAccountType',[AccountTypeController::class, 'store'])->name('createAccountType');
 	Route::put('updateAccountType/{id}',[AccountTypeController::class,'update'])->name('updateAccountType');
+	Route::delete('deleteAccounttType',[AccountTypeController::class,'destroy'])->name('deleteAccounttType');
 	
 	Route::get('order-types',[OrderTypeController::class, 'index']);
 	Route::get('order-types/create',[OrderTypeController::class, 'create']);
@@ -75,6 +77,7 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::get('categories/edit/{id}',[CategoryController::class, 'edit']);
 	Route::post('createCategories',[CategoryController::class, 'store'])->name('createCategories');
 	Route::put('updateCategories/{id}',[CategoryController::class,'update'])->name('updateCategories');
+	Route::delete('deleteCategory',[CategoryController::class,'destroy'])->name('deleteCategory');
 	
 	// Customer
 	Route::resource('customer', CustomerController::class);

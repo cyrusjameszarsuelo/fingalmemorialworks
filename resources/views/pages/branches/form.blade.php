@@ -38,27 +38,27 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Code</label>
                                     <input type="text" name="code" class="form-control"
-                                        value="{{ isset($branch) ? $branch->code : '' }}" placeholder="Code">
+                                        value="{{ isset($branch) ? $branch->code : old('code') }}" placeholder="Code">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control"
-                                        value="{{ isset($branch) ? $branch->name : '' }}" placeholder="Name">
+                                        value="{{ isset($branch) ? $branch->name : old('name') }}" placeholder="Name">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Address 1</label>
                                     <input type="text" name="address1" class="form-control"
-                                        value="{{ isset($branch) ? $branch->address1 : '' }}" placeholder="Address 1">
+                                        value="{{ isset($branch) ? $branch->address1 : old('address1') }}" placeholder="Address 1">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Address 2</label>
                                     <input type="text" name="address2" class="form-control"
-                                        value="{{ isset($branch) ? $branch->address2 : '' }}" placeholder="Address 2">
+                                        value="{{ isset($branch) ? $branch->address2 : old('address2') }}" placeholder="Address 2">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Address 3</label>
                                     <input type="text" name="address3" class="form-control"
-                                        value="{{ isset($branch) ? $branch->address3 : '' }}" placeholder="Address 3">
+                                        value="{{ isset($branch) ? $branch->address3 : old('address3') }}" placeholder="Address 3">
                                 </div>
 
                             </div>
@@ -66,52 +66,35 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Town</label>
                                     <input type="text" name="town" class="form-control"
-                                        value="{{ isset($branch) ? $branch->town : '' }}" placeholder="Town">
+                                        value="{{ isset($branch) ? $branch->town : old('town') }}" placeholder="Town">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>County</label>
                                     <input type="text" name="county" class="form-control"
-                                        value="{{ isset($branch) ? $branch->county : '' }}" placeholder="County">
+                                        value="{{ isset($branch) ? $branch->county : old('county') }}" placeholder="County">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Postcode</label>
                                     <input type="text" name="postcode" class="form-control"
-                                        value="{{ isset($branch) ? $branch->postcode : '' }}" placeholder="Postcode">
+                                        value="{{ isset($branch) ? $branch->postcode : old('postcode') }}" placeholder="Postcode">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Phone</label>
                                     <input type="text" name="phone" class="form-control"
-                                        value="{{ isset($branch) ? $branch->phone : '' }}" placeholder="Phone">
+                                        value="{{ isset($branch) ? $branch->phone : old('phone')  }}" placeholder="Phone">
                                 </div>
 
                             </div>
                         </div>
                         <div class="row mt-20">
                             <div class="col-md-12 text-center ">
-                                <button type="button"
+                                <a href="/branches"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
-                                    Cancel</button>
+                                    Cancel</a>
                                 <button type="submit"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($id) ? 'Update' : 'Create' }}</button>
 
                             </div>
-                            {{-- <div class="row">
-                                    <div>
-                                        <div class="col-lg-6">
-                                            <div class="form-btn">
-                                                <button class="btn btn-primary btn-icon-notika waves-effect"><i
-                                                    class="fa fa-plus-circle" aria-hidden="true"></i> Create</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-btn">
-                                                <a href="/users/create"><button type= "button"
-                                                        class="btn btn-primary btn-icon-notika waves-effect">
-                                                        Cancel</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                         </div>
                 </div>
                 </form>
@@ -121,3 +104,5 @@
     </div>
 
 @endsection
+
+

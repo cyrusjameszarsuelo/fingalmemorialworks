@@ -49,17 +49,17 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>First Name</label>
                                     <input type="text" name="firstname" id="firstname" class="form-control "
-                                        value="{{ isset($user) ? $user->firstname : '' }}" placeholder="First Name">
+                                        value="{{ isset($user) ? $user->firstname : old('firstname') }}" placeholder="First Name">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Last Name</label>
                                     <input type="text" name="lastname" class="form-control"
-                                        value="{{ isset($user) ? $user->lastname : '' }}" placeholder="Last Name">
+                                        value="{{ isset($user) ? $user->lastname : old('lastname') }}" placeholder="Last Name">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Email</label>
                                     <input type="text" name="email"class="form-control"
-                                        value="{{ isset($user) ? $user->email : '' }}" placeholder="Email">
+                                        value="{{ isset($user) ? $user->email : old('email') }}" placeholder="Email">
                                 </div>
                                 <div class="bootstrap-select fm-cmp-mg" style="margin-bottom:20px;">
                                     <label>Access Level</label>
@@ -78,7 +78,7 @@
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Username</label>
                                     <input type="text" name="username" class="form-control"
-                                        value="{{ isset($user) ? $user->username : '' }}" placeholder="Username">
+                                        value="{{ isset($user) ? $user->username : old('username') }}" placeholder="Username">
                                 </div>
                                 <div class="nk-int-st" style="margin-bottom:20px;">
                                     <label>Password</label>

@@ -80,7 +80,7 @@
                                 <tbody>
                                     @foreach ($categories as $category)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td id="tr{{ $category->id }}">{{ $loop->iteration }}</td>
                                             <td>{{ $category->code }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->updated_at }}</td>
@@ -88,9 +88,18 @@
                                                 <a href="categories/edit/{{ $category->id }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
                                                     data-content="Edit"><i class="fa fa-pencil"></i></a>
-                                                <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                    data-placement="bottom" data-content="Delete"><i
-                                                        class="fa fa-trash"></i></button>
+                                                    <button 
+                                                    data-name="{{ $category->name }}"
+                                                    data-url="deleteCategory"
+                                                    data-id="{{ $category->id }}"
+                                                    class="btn btn-danger deleteDataInfo" 
+                                                    type="button" 
+                                                    data-trigger="hover"
+                                                    data-toggle="popover" 
+                                                    data-placement="bottom"
+                                                    >
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -114,4 +123,8 @@
             });
         </script>
     @endif
+@endsection
+
+@section('page-scripts')
+    <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection
