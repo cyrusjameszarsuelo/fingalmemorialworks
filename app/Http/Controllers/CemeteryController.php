@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Cemetery;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Response;
+
+use App\Models\CemeteryGroup;
+use App\Models\CemeteryArea;
 
 class CemeteryController extends Controller
 {
@@ -11,8 +16,12 @@ class CemeteryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        
+        $cemeteries = Cemetery::all();
+        return view('pages.cemeteries.index')
+            ->withCemeteries($cemeteries);
+            
     }
 
     /**
@@ -20,15 +29,23 @@ class CemeteryController extends Controller
      */
     public function create()
     {
-        //
+        $cemeteryGroups = CemeteryGroup::all();
+        $cemeteryAreas = CemeteryArea::all();
+        return view('pages.cemeteries.form')
+            ->withCemeteryGroups($cemeteryGroups)
+            ->withCemeteryAreas($cemeteryAreas);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {   
+       
+        $request->validate(self::formRule());
+        Cemetery::create($request->all());
+        return redirect('/cemetery')
+            ->with('success','Created Successfully!');
     }
 
     /**
@@ -42,9 +59,11 @@ class CemeteryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cemetery $cemetery)
+    public function edit(Request $request, string $id)
     {
-        //
+        $cemetery = Cemetery::find($id);
+        return view('pages.cemeteries.form')
+        ->withCemetery($cemetery);
     }
 
     /**
@@ -61,5 +80,15 @@ class CemeteryController extends Controller
     public function destroy(Cemetery $cemetery)
     {
         //
+    }
+
+    public function formRule($id = false){
+        return [
+            "code"      => ['required','string'],
+            "name"      => ['required','string'],
+            "address1"      => ['required','string'],
+            "group"      => ['required','string'],
+            "area"      => ['required','string'],
+        ];
     }
 }
