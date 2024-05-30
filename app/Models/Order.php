@@ -10,6 +10,29 @@ class Order extends Model
 {
     use HasFactory;
 
+    // protected $fillable=[
+    //                         'order_id',
+    //                         'order_type_id ',
+    //                         'branch_id ',
+    //                         'deceased_name',
+    //                         'date_of_death',
+    //                         'order_headline',
+    //                         'cemetery_id ',
+    //                         'plot_grave',
+    //                         'inscription_completed',
+    //                         'job_was_fixed_on',
+    //                         'source_id',
+    //                         'category_id',
+    //                         'special_instructions',
+    //                         'status_id',
+    //                         'customer_id',
+    //                         'grave_space_id',
+    //                         'created_by',
+    //                         'updated_by',
+    //                         'deleted_by'
+    //                     ];
+    
+
     public function orderType(): BelongsTo
     {
         return $this->belongsTo(OrderType::class);
@@ -42,4 +65,6 @@ class Order extends Model
     {
         return $this->belongsTo(GraveSpace::class);
     }
+
+
 }

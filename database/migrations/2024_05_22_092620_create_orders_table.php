@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
-            $table->foreignId('order_type_id')->constrained();
             $table->foreignId('branch_id')->constrained();
             $table->string('deceased_name');
             $table->date('date_of_death');

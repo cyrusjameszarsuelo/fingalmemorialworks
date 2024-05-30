@@ -23,11 +23,12 @@ use App\Http\Controllers\CustomerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::group(['middleware'=> 'auth'], function(){
 
    Route::get('/order', [OrderController::class, 'index']);
 	Route::get('/order/create/{tab?}', [OrderController::class, 'create']);
-	
+	Route::match(['get', 'post'], 'order/create/createGeneralDetails', [OrderController::class, 'createGeneralDetails'])->name("createGeneralDetails");
 	// Route::get('/',[UserController::class, 'index']);
 	
 	Route::get('/users',[UserController::class, 'index']);

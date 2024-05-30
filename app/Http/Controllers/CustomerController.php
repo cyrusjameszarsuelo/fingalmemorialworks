@@ -54,11 +54,11 @@ class CustomerController extends Controller
         $data->county      = $request->county;
         $data->postcode    = $request->postcode;
 
-        // if(!$id){
-        //     $data->created_by   = Auth::id();
-        // }else{
-        //     $data->updated_by   = Auth::id();
-        // }
+        if(!$id){
+            $data->created_by   = Auth::id();
+        }else{
+            $data->updated_by   = Auth::id();
+        }
 
         $result             = $data->save();
 
