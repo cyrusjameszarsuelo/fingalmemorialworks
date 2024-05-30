@@ -13,7 +13,10 @@ class OrderType extends Model
     protected $fillable = [
 
     'name',
-    'active'
+    'active',    
+    'created_by',
+    'updated_by',
+    'deleted_by'
     
     ];
 }

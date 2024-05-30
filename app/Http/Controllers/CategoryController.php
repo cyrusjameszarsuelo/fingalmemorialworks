@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Response;
+use Auth;
 
 
 class CategoryController extends Controller
@@ -33,6 +35,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
         Category::create($request->all());
         return redirect('/categories')
              ->with('success','Created Successfully!');
@@ -64,6 +69,9 @@ class CategoryController extends Controller
     {
         $request->validate(self::formRule($id));
             $category = Category::find($id);
+            $request->merge([
+                'updated_by' => Auth::id()
+            ]);
             $category->update($request->all());
             return redirect('/categories')
                 ->with('success','Updated Successfully!');
@@ -72,9 +80,13 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
-        //
+        $id                                 = $request->id;
+        $category = $categoryData     = Category::findOrFail($id);
+        $category->update(['deleted_by' => Auth::id()]);
+        $category->delete();
+        return Response::json($categoryData);
     }
     public function formRule($id = false){
         return [

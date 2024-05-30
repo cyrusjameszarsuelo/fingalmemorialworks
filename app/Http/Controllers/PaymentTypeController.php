@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 use Auth;
 use Response;
 class PaymentTypeController extends Controller
@@ -23,7 +25,9 @@ class PaymentTypeController extends Controller
      */
     public function create()
     {
-        //
+        // $request->session()->flash('status', 'Created Successfully!');
+        return view('pages.payment-types.form');
+            
     }
 
     /**
@@ -31,7 +35,14 @@ class PaymentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
+        PaymentType::create($request->all());
+        return redirect('/payment-types')
+            ->with('success','Created Successfully!');
     }
 
     /**
@@ -45,17 +56,29 @@ class PaymentTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PaymentType $paymentType)
+    public function edit(PaymentType $paymentType,String $id)
     {
-        //
+        $paymentType = PaymentType::find($id);
+        return view('pages.payment-types.form')
+            ->with('id', $id)
+            ->with('paymentType', $paymentType);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PaymentType $paymentType)
+    public function update(Request $request, PaymentType $paymentType,String $id)
     {
-        //
+       
+       
+        $request->validate(self::formRule($id));       
+        $paymentType = PaymentType::find($id);
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
+       $paymentType->update($request->all());
+        return redirect('/payment-types')
+            ->with('success','Updated Successfully!');
     }
 
     /**
@@ -65,11 +88,15 @@ class PaymentTypeController extends Controller
     {
         $id                                 = $request->id;
         $paymentType = $paymentTypeData     = PaymentType::findOrFail($id);
-        // $paymentType->deleted_by            = Auth::id();
-
-        // $paymentType->save();
+        $paymentType->update(['deleted_by' => Auth::id()]);
         $paymentType->delete();
         return Response::json($paymentTypeData);
 
+    }
+
+    public function formRule($id = false){
+        return [
+            "name"    => ['required','string','min:5','max:900', Rule::unique('payment_types')->ignore($id ? $id : "")],
+        ];
     }
 }

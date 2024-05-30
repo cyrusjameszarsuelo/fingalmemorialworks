@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Branch extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
 
     protected $fillable =[
@@ -19,7 +20,10 @@ class Branch extends Model
         'postcode',
         'town',
         'county',
-        'phone'
+        'phone',        
+        'created_by',
+        'updated_by',
+        'deleted_by'
 
     ];
 }

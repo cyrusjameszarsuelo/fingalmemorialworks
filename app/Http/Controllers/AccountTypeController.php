@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AccountType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Response;
+use Auth;
 
 
 class AccountTypeController extends Controller
@@ -33,6 +35,9 @@ class AccountTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
         AccountType::create($request->all());
         return redirect('/account-types')
             ->with('success','Created Successfully!');
@@ -64,6 +69,9 @@ class AccountTypeController extends Controller
     {
         $request->validate(self::formRule($id));
         $accountType = AccountType::find($id);
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
         $accountType->update($request->all());
 
         return redirect('/account-types')
@@ -73,9 +81,13 @@ class AccountTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AccountType $accountType)
+    public function destroy(Request $request)
     {
-        //
+        $id                                 = $request->id;
+        $accountType = $accountTypeData     = accountType::findOrFail($id);
+        $accountType->update(['deleted_by' => Auth::id()]);
+        $accountType->delete();
+        return Response::json($accountTypeData);
     }
 
     public function formRule($id = false){

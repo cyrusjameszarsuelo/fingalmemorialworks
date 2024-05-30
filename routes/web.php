@@ -35,6 +35,7 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::get('/users/create',[UserController::class, 'create']);
 	Route::post('createUser',[UserController::class, 'store'])->name('createUser');
 	Route::put('updateUser/{id}',[UserController::class, 'update'])->name('updateUser');
+	Route::delete('deleteUser',[UserController::class, 'destroy'])->name('deleteUser');
 	
 	Route::get('branches',[BranchController::class, 'index']);
 	Route::get('/branches/create',[BranchController::class, 'create']);

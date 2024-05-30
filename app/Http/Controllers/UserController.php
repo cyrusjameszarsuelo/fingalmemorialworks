@@ -7,6 +7,8 @@ use App\Models\User;
 use Hash;
 use App\Models\AccessLevel;
 use Illuminate\Validation\Rule;
+use Response;
+use Auth;
 
 class UserController extends Controller
 {
@@ -40,6 +42,7 @@ class UserController extends Controller
         
         $request->merge([
             'password' => Hash::make($request->password),
+            'created_by' => Auth::id()
         ]);
 
         User::create($request->all());
@@ -74,10 +77,9 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {       
 
-       
-
+        
         $user = User::find($id);        
 
         if($request->password){ 
@@ -86,12 +88,14 @@ class UserController extends Controller
         }else{
             $password= $user->password;
         }
+
         $request->merge([
             'password' => $password,
-        ]);
+            'updated_by' => Auth::id()
+        ]);               
 
         $request->validate(self::formRule($id));
-        
+
         $user->update($request->all());
         return redirect('/users')
             ->with('success','Updated Successfully!');
@@ -101,9 +105,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id                                 = $request->id;
+        $user = $userTypeData     = User::findOrFail($id);
+        $user->update(['deleted_by' => Auth::id()]);
+        $user->delete();
+        return Response::json($userTypeData);
     }
     public function formRule($id = false){
         return [

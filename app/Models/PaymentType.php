@@ -12,6 +12,9 @@ class PaymentType extends Model
 
     protected $fillable = [
 
-        'name'
+        'name',        
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

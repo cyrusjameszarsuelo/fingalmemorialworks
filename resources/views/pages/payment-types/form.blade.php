@@ -6,11 +6,11 @@
                 <div class="breadcrumbs-content">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h3>{{ isset($id) ? 'Update' : 'Create' }} Order Types</h3>
+                            <h3>{{ isset($id) ? 'Update' : 'Create' }} Payment Types</h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <p class="breadcrumbs-link"><a href="">Dashboard</a> / <b>
-                                    {{ isset($id) ? 'Update' : 'Create' }} Order Types </b></p>
+                                    {{ isset($id) ? 'Update' : 'Create' }} Payment Types </b></p>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row mt-20">
                             <div class="col-md-12 text-center ">
-                                <a href="/document-types"
+                                <a href="/payment-types"
                                     class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
                                     Cancel</a>
                                 <button type="submit"

@@ -6,6 +6,7 @@ use App\Models\OrderType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Response;
+use Auth;
 class OrderTypeController extends Controller
 {
     /**
@@ -33,6 +34,9 @@ class OrderTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
         OrderType::create($request->all());
         return redirect('/order-types')
             ->with('success','Created Successfully!');
@@ -63,7 +67,9 @@ class OrderTypeController extends Controller
     public function update(Request $request, OrderType $orderType,String $id)
     {
         $request->validate(self::formRule($id));
-
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
         $orderType = OrderType::find($id);
         $orderType->update($request->all());
         return redirect('/order-types')
@@ -77,7 +83,7 @@ class OrderTypeController extends Controller
     {
         $id                             = $request->id;
         $orderType = $orderTypeData     = OrderType::findOrFail($id);
-
+        $orderType->update(['deleted_by' => Auth::id()]);
         $orderType->delete();
         return Response::json($orderTypeData);
     }

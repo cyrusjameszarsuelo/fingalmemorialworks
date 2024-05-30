@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DocumentType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Response;
+use Auth;
 
 class DocumentTypeController extends Controller
 {
@@ -33,6 +35,9 @@ class DocumentTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
         DocumentType::create($request->all());
         return redirect('/document-types')
             ->with('success', 'Created Successfully!');
@@ -64,6 +69,9 @@ class DocumentTypeController extends Controller
     {
         $request->validate(self::formRule($id));
         $documentType = DocumentType::find($id);
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
         $documentType->update($request->all());
         return redirect('/document-types')
             ->with('success', 'Updated Successfully!');
@@ -72,9 +80,13 @@ class DocumentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DocumentType $documentType)
+    public function destroy(Request $request)
     {
-        //
+        $id                                 = $request->id;
+        $documentType = $documentTypeData     = DocumentType::findOrFail($id);
+        $documentType->update(['deleted_by' => Auth::id()]);
+        $documentType->delete();
+        return Response::json($documentTypeData);
     }
 
     public function formRule($id = false)

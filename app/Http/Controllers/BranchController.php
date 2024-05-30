@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Response;
+use Auth;
 
 class BranchController extends Controller
 {
@@ -34,6 +36,10 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
+
         Branch::create($request->all());
 
         return redirect('/branches')
@@ -66,6 +72,10 @@ class BranchController extends Controller
     {
         $request->validate(self::formRule($id));
         $branch = Branch::find($id);
+
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
         $branch->update($request->all());
 
         return redirect('/branches')
@@ -75,9 +85,13 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Branch $branch)
+    public function destroy(Request $request)
     {
-        //
+        $id                            = $request->id;
+        $branch = $branchData     = Branch::findOrFail($id);
+        $branch->update(['deleted_by' => Auth::id()]);
+        $branch->delete();
+        return Response::json($branchData);
     }
     public function formRule($id = false){
         return [
