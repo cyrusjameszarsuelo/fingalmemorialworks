@@ -15,6 +15,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CemeteryController;
 use App\Http\Controllers\CemeteryGroupController;
 use App\Http\Controllers\CemeteryAreaController;
+use App\Http\Controllers\SourceController;
+use App\Http\Controllers\TitleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,8 +91,14 @@ Route::group(['middleware'=> 'auth'], function(){
 	// Cemetery Group
 	Route::resource('cemetery-group', CemeteryGroupController::class);
 
-	// // Cemetery Area
+	// Cemetery Area
 	Route::resource('cemetery-area', CemeteryAreaController::class);
+
+	// Source
+	Route::resource('source', SourceController::class);
+
+	// Title
+	Route::resource('title', TitleController::class);
 
 	// Customer
 	Route::resource('customer', CustomerController::class);
