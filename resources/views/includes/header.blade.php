@@ -12,7 +12,10 @@
                 <div class="header-top-menu">
                     <ul class="nav navbar-nav notika-top-nav">
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button"
-                                aria-expanded="false" class="nav-link dropdown-toggle"><span><img src="{{ asset('images/user.png') }}" style="width:40px;height:40px;margin-right: 5px;"></span> {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</a>
+                                aria-expanded="false" class="nav-link dropdown-toggle"><span><img
+                                        src="{{ asset('images/user.png') }}"
+                                        style="width:40px;height:40px;margin-right: 5px;"></span>
+                                {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</a>
                             <div role="menu" class="dropdown-menu message-dd chat-dd animated fadeIn">
                                 <div class="hd-message-info">
                                     <a href="#">
@@ -76,13 +79,19 @@
                                     <li><a href="/order-report">Order Report</a></li>
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#admin-mob" href="#">Admin</a>
+                            <li><a data-toggle="collapse" data-target="#admin-mob" href="#">Admin Utilities</a>
                                 <ul id="admin-mob" class="collapse dropdown-header-top">
                                     <li><a href="/account-types">Account Types</a></li>
                                     <li><a href="/branches">Branches</a></li>
+                                    <li><a href="/categories">Categories</a></li>
+                                    <li><a href="/cemetery">Cemetery</a></li>
+                                    <li><a href="/cemetery-area">Cemetery Area</a></li>
+                                    <li><a href="/cemetery-group">Cemetery Group</a></li>
                                     <li><a href="/document-types">Document Types</a></li>
                                     <li><a href="/order-types">Order Types</a></li>
                                     <li><a href="/payment-types">Payment Types</a></li>
+                                    <li><a href="/source">Source</a></li>
+                                    <li><a href="/title">Title</a></li>
                                 </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#admin-mob" href="#">User</a>
@@ -106,16 +115,20 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li
                         class="{{ Request::is('order', 'order/*', 'customer', 'customer/*', 'complete-unsettled', 'complete-unsettled/*') ? 'active' : '' }}">
-                        <a data-toggle="tab" href="#orders"><i class="fa fa-list"></i> Orders</a></li>
+                        <a data-toggle="tab" href="#orders"><i class="fa fa-list"></i> Orders</a>
+                    </li>
                     <li
                         class="{{ Request::is('new-memorial', 'new-memorial/*', 'renovation', 'renovation/*', 'sundries', 'sundries/*', 'cremation-product', 'cremation-product/*', 'other', 'other/*') ? 'active' : '' }}">
-                        <a data-toggle="tab" href="#schedules"><i class="fa fa-calendar"></i> Schedules</a></li>
+                        <a data-toggle="tab" href="#schedules"><i class="fa fa-calendar"></i> Schedules</a>
+                    </li>
                     <li
                         class="{{ Request::is('order-summary', 'order-summary/*', 'order-details', 'order-details/*', 'order-report', 'order-report/*') ? 'active' : '' }}">
-                        <a data-toggle="tab" href="#reports"><i class="fa fa-folder-open-o"></i> Reports</a></li>
+                        <a data-toggle="tab" href="#reports"><i class="fa fa-folder-open-o"></i> Reports</a>
+                    </li>
                     <li
                         class=" {{ Request::is('branches', 'branches/*', 'document-types', 'document-types/*', 'cemetery', 'cemetery/*', 'cemetery-group', 'cemetery-group/*', 'cemetery-area', 'cemetery-area/*') ? 'active' : '' }}">
-                        <a data-toggle="tab" href="#admin"><i class="fa fa-cog"></i> Admin Utilities</a></li>
+                        <a data-toggle="tab" href="#admin"><i class="fa fa-cog"></i> Admin Utilities</a>
+                    </li>
                     <li class=" {{ Request::is('users', 'users/*') ? 'active' : '' }}"><a data-toggle="tab"
                             href="#user"><i class="fa fa-user"></i> User</a></li>
                 </ul>
@@ -158,6 +171,8 @@
                             <li><a href="/document-types">Document Types</a></li>
                             <li><a href="/order-types">Order Types</a></li>
                             <li><a href="/payment-types">Payment Types</a></li>
+                            <li><a href="/source">Source</a></li>
+                            <li><a href="/title">Title</a></li>
                         </ul>
                     </div>
                     <div id="user"

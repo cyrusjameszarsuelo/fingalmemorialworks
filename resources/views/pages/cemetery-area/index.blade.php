@@ -79,7 +79,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Code</th>
-                                        <th>Group Name</th>
+                                        <th>Area Name</th>
                                         <th>Last update</th>
                                         <th>Action</th>
                                     </tr>
