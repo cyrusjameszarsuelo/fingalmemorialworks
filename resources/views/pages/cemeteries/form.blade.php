@@ -6,11 +6,11 @@
                 <div class="breadcrumbs-content">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h3>{{ isset($id) ? 'Update' : 'Create' }} Cemetery</h3>
+                            <h3>{{ isset($cemetery) ? 'Update' : 'Create' }} Cemetery</h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <p class="breadcrumbs-link"><a href="">Dashboard</a> / <b>
-                                    {{ isset($id) ? 'Update' : 'Create' }} Cemetery </b></p>
+                                    {{ isset($cemetery) ? 'Update' : 'Create' }} Cemetery </b></p>
                         </div>
                     </div>
 
@@ -28,10 +28,10 @@
                     @endif
 
                     <form method="POST"
-                        action=" {{ isset($id) ? route('cemetery.update', $id) : route('cemetery.store') }} ">
+                        action=" {{ isset($cemetery) ? route('cemetery.update', $cemetery) : route('cemetery.store') }} ">
 
                         @csrf
-                        @if (isset($id))
+                        @if (isset($cemetery))
                             @method('PUT')
                         @endif
                         <div class="row" style="margin-top:20px;">
@@ -58,19 +58,19 @@
                                 </div>
                                 <div class="chosen-select-act fm-cmp-mg mb-20">
                                     <label>Group</label>
-                                    <select class="chosen" data-placeholder="Choose a Group..." name="group">
+                                    <select class="chosen" data-placeholder="Choose a Group..." name="cemetery_group_id">
                                         <option value="">-- SELECT GROUP --</option>
                                         @foreach ($cemeteryGroups as $cemeteryGroup)
-                                            <option value="{{ $cemeteryGroup->code }}">{{ $cemeteryGroup->name }}</option>
+                                            <option value="{{ $cemeteryGroup->id }}" {{ isset($cemetery) && ( $cemeteryGroup->id == $cemetery->cemetery_group_id) ? 'selected' : '' }}>{{ $cemeteryGroup->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="chosen-select-act fm-cmp-mg mb-20">
                                     <label>Area</label>
-                                    <select class="chosen" data-placeholder="Choose an Area..." name="area">
+                                    <select class="chosen" data-placeholder="Choose an Area..." name="cemetery_area_id">
                                         <option value="">-- SELECT AREA --</option>
                                         @foreach ($cemeteryAreas as $cemeteryArea)
-                                            <option value="{{ $cemeteryArea->code }}">{{ $cemeteryArea->name }}</option>
+                                            <option value="{{ $cemeteryArea->id }}" {{ isset($cemetery) && ( $cemeteryArea->id == $cemetery->cemetery_area_id) ? 'selected' : '' }}>{{ $cemeteryArea->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -116,7 +116,7 @@
                                         class="btn btn-primary btn-icon-notika waves-effect form-btn form-cancel-btn ">
                                         Cancel</button></a>
                                 <button type="submit"
-                                    class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($id) ? 'Update' : 'Create' }}</button>
+                                    class="btn btn-primary btn-icon-notika waves-effect form-btn ">{{ isset($cemetery) ? 'Update' : 'Create' }}</button>
 
                             </div>
                         </div>

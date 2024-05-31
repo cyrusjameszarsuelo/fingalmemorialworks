@@ -92,15 +92,22 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $cemetery->code }}</td>
                                             <td>{{ $cemetery->name }}</td>
-                                            <td>{{ $cemetery->group }}</td>
-                                            <td>{{ $cemetery->area }}</td>
+                                            <td>{{ $cemetery->cemeteryGroup->name }}</td>
+                                            <td>{{ $cemetery->cemeteryArea->name }}</td>
                                             <td>{{ $cemetery->updated_at }}</td>
                                             <td class="popover-cl-pro">
                                                 <a href="{{ route('cemetery.edit', [$cemetery]) }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
                                                     data-content="Edit"><i class="fa fa-pencil"></i></a>
-                                                <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                    data-placement="bottom" data-content="Delete"><i
+                                                <button data-name="{{ $cemetery->name }}"
+                                                    data-url="cemetery/destroy"
+                                                    data-id="{{ $cemetery->id }}"
+                                                    class="btn btn-danger deleteDataInfo" 
+                                                    type="button" 
+                                                    data-trigger="hover" 
+                                                    data-toggle="popover"
+                                                    data-placement="bottom" 
+                                                    data-content="Delete"><i
                                                         class="fa fa-trash"></i></button>
                                             </td> 
                                         </tr>
@@ -124,4 +131,7 @@
             });
         </script>
     @endif
+@endsection
+@section('page-scripts')
+    <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection
