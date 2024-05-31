@@ -69,6 +69,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px;
   font-weight:700;
 }
+a {
+    color: #8981d8;
+    text-decoration: none;
+}
 a {transition: all 0.3s ease 0s;text-decoration:none;}
 a:hover {
   color: #8981d8;
@@ -203,13 +207,13 @@ body {}
 }
 .navbar-nav>li>a{
 	color:#fff;
-	padding: 20px 0px 20px 30px;
+	padding: 10px 0px 0px 30px;
 }
 .rtl-layout .navbar-nav>li>a{
 	padding: 20px 30px 20px 0px;
 }
 .nav.navbar-nav.notika-top-nav li a{
-	font-size:20px;
+	font-size:16px;
 	position:relative;
 }
 .header-top-menu .nav.notika-top-nav li .search-dd {
@@ -319,9 +323,9 @@ body {}
 .header-top-menu .nav.notika-top-nav li .message-dd.task-dd{
 	left:-200px;
 }
-.header-top-menu .nav.notika-top-nav li .message-dd.chat-dd{
+/* .header-top-menu .nav.notika-top-nav li .message-dd.chat-dd{
 	left:-250px;
-}
+} */
 .hd-message-img img{
 	border-radius:50%;
 }

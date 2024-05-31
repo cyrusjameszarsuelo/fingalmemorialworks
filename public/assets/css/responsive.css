@@ -340,7 +340,7 @@
 		text-align:center;
 	}
 	.nav.navbar-nav.notika-top-nav {
-		float: unset;
+		float: unset !important;
 		margin:0px;
 	}
 	.header-top-menu .nav.navbar-nav.notika-top-nav li{
@@ -363,9 +363,9 @@
 	.header-top-menu .nav.notika-top-nav li .search-dd .search-input {
 		margin: 4px 0px;
 	}
-	.header-top-menu .nav.notika-top-nav li .message-dd.chat-dd {
+	/* .header-top-menu .nav.notika-top-nav li .message-dd.chat-dd {
 		left: -231px;
-	}
+	} */
 	.header-top-menu .nav.notika-top-nav li .message-dd {
 		left: -70px;
 	}

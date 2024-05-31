@@ -163,7 +163,7 @@ h4.title-header::after {
 .form-cancel-btn{
     background-color:#8981d8 ;
     /* border:3px solid #8981d8 */
-
+}
 
 
 
@@ -227,6 +227,10 @@ ul.order-tabs li.active a, .order-tabs li:focus a, .order-tabs li:hover a{
 .login-desc {
     color:#fff;
 }
+.error-login {
+    color:red;
+    margin-bottom:20px;
+}
 /* END LOGIN */
 
 /* CONTACT */
@@ -237,7 +241,4 @@ ul.order-tabs li.active a, .order-tabs li:focus a, .order-tabs li:hover a{
     min-height:100vh;
     text-align:center;
     background-color:#8981d8;
-}
-.contact-content:before {
-    
 }
