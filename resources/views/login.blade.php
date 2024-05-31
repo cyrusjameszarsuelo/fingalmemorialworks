@@ -14,7 +14,7 @@
                 <div class="nk-form">
                     @csrf
                     @if($errors->any())
-                        <h4>{{$errors->first()}}</h4>
+                        <h4 class="error-login">{{$errors->first()}}</h4>
                     @endif
                     <div class="input-group">
                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>

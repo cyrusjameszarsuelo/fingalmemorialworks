@@ -34,7 +34,7 @@ class AuthController extends Controller
             
         }
   
-        return Redirect::back()->withErrors(['msg' => 'Invalid Username and Password']);
+        return Redirect::back()->withErrors(['msg' => 'Invalid Username or Password']);
     }
 
     public function forgotPassword(){
