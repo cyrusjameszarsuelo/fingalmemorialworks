@@ -95,8 +95,15 @@
                                                 <a href="{{ route('cemetery-area.edit', [$cemeteryArea]) }}"class="btn btn-primary"
                                                     data-trigger="hover" data-toggle="popover" data-placement="bottom"
                                                     data-content="Edit"><i class="fa fa-pencil"></i></a>
-                                                <button class="btn btn-danger" data-trigger="hover" data-toggle="popover"
-                                                    data-placement="bottom" data-content="Delete"><i
+                                                <button data-name="{{ $cemeteryArea->name }}"
+                                                    data-url="cemetery-area/destroy"
+                                                    data-id="{{ $cemeteryArea->id }}"
+                                                    class="btn btn-danger deleteDataInfo" 
+                                                    type="button" 
+                                                    data-trigger="hover" 
+                                                    data-toggle="popover"
+                                                    data-placement="bottom" 
+                                                    data-content="Delete"><i
                                                         class="fa fa-trash"></i></button>
                                             </td> 
                                         </tr>
@@ -120,4 +127,7 @@
             });
         </script>
     @endif
+@endsection
+@section('page-scripts')
+    <script src="{{ asset('js/delete-script.js') }}"></script>
 @endsection

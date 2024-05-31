@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CemeteryController;
+use App\Http\Controllers\CemeteryGroupController;
+use App\Http\Controllers\CemeteryAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +26,6 @@ use App\Http\Controllers\CustomerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::group(['middleware'=> 'auth'], function(){
 
    Route::get('/order', [OrderController::class, 'index']);
@@ -81,6 +83,15 @@ Route::group(['middleware'=> 'auth'], function(){
 	Route::put('updateCategories/{id}',[CategoryController::class,'update'])->name('updateCategories');
 	Route::delete('deleteCategory',[CategoryController::class,'destroy'])->name('deleteCategory');
 	
+	// Cemetery
+	Route::resource('cemetery', CemeteryController::class);
+
+	// Cemetery Group
+	Route::resource('cemetery-group', CemeteryGroupController::class);
+
+	// // Cemetery Area
+	Route::resource('cemetery-area', CemeteryAreaController::class);
+
 	// Customer
 	Route::resource('customer', CustomerController::class);
 
