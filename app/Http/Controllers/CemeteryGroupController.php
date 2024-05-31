@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CemeteryGroup;
-
+use Auth;
+use Response;
 class CemeteryGroupController extends Controller
 {
     /**
@@ -31,6 +32,9 @@ class CemeteryGroupController extends Controller
     public function store(Request $request)
     {
         $request->validate(self::formRule());
+        $request->merge([
+            'created_by' => Auth::id()
+        ]);
         CemeteryGroup::create($request->all());
         return redirect('/cemetery-group')
             ->with('success','Created Successfully!');
@@ -60,7 +64,9 @@ class CemeteryGroupController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate(self::formRule($id));
-
+        $request->merge([
+            'updated_by' => Auth::id()
+        ]);
         $cemeteryGroup = CemeteryGroup::find($id);
         $cemeteryGroup->update($request->all());
         return redirect('/cemetery-group')
@@ -70,9 +76,13 @@ class CemeteryGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id                             = $request->id;
+        $cemeteryGroup = $cemeteryGroupData = CemeteryGroup::findOrFail($id);
+        $cemeteryGroup->update(['deleted_by' => Auth::id()]);
+        $cemeteryGroup->delete();
+        return Response::json($cemeteryGroupData);
     }
 
     public function formRule($id = false){
