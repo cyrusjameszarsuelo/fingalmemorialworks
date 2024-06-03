@@ -28,6 +28,9 @@ h1.text-logo {
 .breadcrumbs {
     margin-bottom: 30px;
 }
+.breadcrumbs-no-mb {
+    margin-bottom: 0px;
+}
 .breadcrumbs-content {
     padding: 20px 20px;
     background: #fff;
@@ -48,6 +51,13 @@ h1.text-logo {
     width: 100%;
     margin: 10px auto;
     padding: 10px;
+}
+.header-btn-adminutil {
+    text-align:right;
+    margin-top:10px;
+}
+.header-btn-adminutil a button {
+    padding: 10px 20px;
 }
 /* END BREADCRUMBS */
 /* FORM/FIELDS */
