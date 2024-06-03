@@ -140,6 +140,7 @@
                         class="tab-pane notika-tab-menu-bg animated fadeInDown {{ Request::is('branches', 'branches/*', 'document-types', 'document-types/*', 'branches', 'branches/*', 'account-types', 'account-types/*', 'categories', 'categories/*', 'order-types', 'order-types/*', 'payment-types', 'payment-types/*', 'cemetery', 'cemetery/*', 'cemetery-group', 'cemetery-group/*', 'cemetery-area', 'cemetery-area/*') ? 'active' : '' }}">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="/account-types">Account Types</a></li>
+                            <li><a href="/analysis">Analysis</a></li>
                             <li><a href="/branches">Branches</a></li>
                             <li><a href="/categories">Categories</a></li>
                             <li><a href="/cemetery">Cemetery</a></li>
@@ -147,9 +148,10 @@
                             <li><a href="/cemetery-group">Cemetery Group</a></li>
                             <li><a href="/document-types">Document Types</a></li>
                             <li><a href="/order-types">Order Types</a></li>
-                            <li><a href="/payment-types">Payment Types</a></li>
-                            <li><a href="/source">Source</a></li>
-                            <li><a href="/title">Title</a></li>
+                            <li><a href="/payment-types">Payment Types</a></li>                           
+                            <li><a href="/payment-types">Sources</a></li>
+                            <li><a href="/payment-types">Titles</a></li>
+                            <li><a href="/vat-codes">Vat Codes</a></li>
                         </ul>
                     </div>
                     <div id="user"

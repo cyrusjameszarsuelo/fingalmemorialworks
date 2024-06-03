@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountTypeController;
 use App\Http\Controllers\BranchController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\OrderTypeController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VatCodeController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrderController;
@@ -103,6 +105,21 @@ Route::group(['middleware'=> 'auth'], function(){
 	// Title
 	Route::resource('title', TitleController::class);
 
+	Route::get('analysis',[AnalysisController::class, 'index']);
+	Route::get('analysis/create',[AnalysisController::class, 'create']);
+	Route::get('analysis/edit/{id}',[AnalysisController::class, 'edit']);
+	Route::post('createAnalysis',[AnalysisController::class, 'store'])->name('createAnalysis');
+	Route::put('updateAnalysis/{id}',[AnalysisController::class,'update'])->name('updateAnalysis');
+	Route::delete('deleteAnalysis',[AnalysisController::class,'destroy'])->name('deleteAnalysis');
+
+	Route::get('vat-codes',[VatCodeController::class, 'index']);
+	Route::get('vat-codes/create',[VatCodeController::class, 'create']);
+	Route::get('vat-codes/edit/{id}',[VatCodeController::class, 'edit']);
+	Route::post('createVatCodes',[VatCodeController::class, 'store'])->name('createVatCodes');
+	Route::put('updateVatCodes/{id}',[VatCodeController::class,'update'])->name('updateVatCodes');
+	Route::delete('deleteVatCodes',[VatCodeController::class,'destroy'])->name('deleteVatCodes');
+
+	
 	// Customer
 	Route::resource('customer', CustomerController::class);
 
