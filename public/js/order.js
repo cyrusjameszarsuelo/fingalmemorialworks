@@ -3,6 +3,9 @@ $(document).on("change","#input-cemetery",function(){
     $("#cemetery_area").val(area);
 });
 
+
+// Related on GENERAL DETAILS
+
 function getGeneralDetails(){
     let data = {
         order_type_id:          $("[name=order_type_id]").val(),
@@ -15,7 +18,7 @@ function getGeneralDetails(){
         plot_grave:             $("[name=plot_grave]").val(),
         inscription_completed:  $("[name=inscription_completed]").val(),
         job_was_fixed_on:       $("[name=job_was_fixed_on]").val(),
-        source_id:              $("[name=source_id]").val(),
+        source_id:              $("[name=source_id]").find(":selected").val(),
         category_id:            $("[name=category_id]").val(),
         area:                   $("[name=area]").val(),
         order_date:             $("[name=order_date]").val(),
@@ -45,7 +48,6 @@ function getCustomerDetails(){
     return data;
 }
 
-
 $(document).on("click",".create-submit",function(){ 
     let customerData = getCustomerDetails();
     let orderData    = getGeneralDetails();
@@ -57,12 +59,65 @@ $(document).on("click",".create-submit",function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data,
-        url: "createGeneralDetails",
+        url: "/order/create/modifyGeneralDetails",
         success:function(data){
-            console.log(data);
+            let order_id  = data;
+
+            Swal.fire({
+                icon: "success",
+                title: "New Order Created",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(function(){
+
+                window.location.href = `${SYSTEM_URL}/order/edit/general-details/${order_id}` ;
+
+            });
         },
         error:function(error){
 
         }
     });
 });
+
+$(document).on("click",".edit-submit",function(){
+    let order_id     = $(this).attr("orderid");
+    let customer_id  = $(this).attr("customerid");
+    let customerData = getCustomerDetails();
+    let orderData    = getGeneralDetails();
+    let data         = { order_id, customer_id, customerData, orderData };
+
+
+    $.ajax({
+        type: "PUT",
+        method: "PUT",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data,
+        url: "/order/create/modifyGeneralDetails",
+        success:function(data){
+            alert(data);
+            let order_id  = data;
+
+            Swal.fire({
+                icon: "success",
+                title: "Successfully Order Updated",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(function(){
+
+                window.location.href = `${SYSTEM_URL}/order/edit/general-details/${order_id}` ;
+
+            });
+        },
+        error:function(error){
+
+        }
+    });
+
+
+});
+
+// END Related on GENERAL DETAILS
+

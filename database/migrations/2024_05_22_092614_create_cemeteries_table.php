@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->foreignId('cemetery_group_id')->constrained();
             $table->foreignId('cemetery_area_id')->constrained();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_by')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

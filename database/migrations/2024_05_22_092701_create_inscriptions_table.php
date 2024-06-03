@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->longText('inscription_details');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -9,29 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     use HasFactory;
-
-    // protected $fillable=[
-    //                         'order_id',
-    //                         'order_type_id ',
-    //                         'branch_id ',
-    //                         'deceased_name',
-    //                         'date_of_death',
-    //                         'order_headline',
-    //                         'cemetery_id ',
-    //                         'plot_grave',
-    //                         'inscription_completed',
-    //                         'job_was_fixed_on',
-    //                         'source_id',
-    //                         'category_id',
-    //                         'special_instructions',
-    //                         'status_id',
-    //                         'customer_id',
-    //                         'grave_space_id',
-    //                         'created_by',
-    //                         'updated_by',
-    //                         'deleted_by'
-    //                     ];
     
+    public function user(): BelongsTo{
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    
+    public function customer(): BelongsTo{
+        return $this->belongsTo(Customer::class);
+    }
+
 
     public function orderType(): BelongsTo
     {

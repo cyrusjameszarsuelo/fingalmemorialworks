@@ -1,5 +1,5 @@
 @extends ('pages.order.form')
-@section('tab-content')
+@section('tab-inscription-details')
 <div>
     <div class="row mt-50">
         <h3 class="title text-center">Inscription Details</h3>

@@ -3,7 +3,7 @@
 
 @include('includes.head')
 
-<body>
+<body url="{{url('')}}">
     @include('includes.header')
 
     @yield('content')

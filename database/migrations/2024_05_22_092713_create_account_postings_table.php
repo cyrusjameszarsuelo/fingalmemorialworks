@@ -15,11 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('payment_type_id')->constrained();
-            $table->string('payment');
+            $table->float('payment', 10, 2);
             $table->foreignId('account_type_id')->constrained();
             $table->string('invoice_number');
-            $table->integer('debit');
-            $table->integer('credit');
+            $table->float('debit', 10, 2);
+            $table->float('credit', 10, 2);
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

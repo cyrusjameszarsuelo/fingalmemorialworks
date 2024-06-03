@@ -1,5 +1,5 @@
 @extends ('pages.order.form')
-@section('tab-content')
+@section('tab-document')
     <div class="document-field mt-40 mb-40">
         <div class="row">
             <h3 class="title text-center">Document</h3>

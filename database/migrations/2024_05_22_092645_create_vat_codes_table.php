@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('vat_description');
             $table->float('vat');
             $table->string('code');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

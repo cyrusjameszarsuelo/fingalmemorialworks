@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('username');
-            $table->foreignId('access_level_id')->constrained();
+            $table->foreignId('access_level_id')->constrained('access_levels');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_by')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

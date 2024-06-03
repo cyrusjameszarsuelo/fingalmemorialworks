@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
+            $table->foreignId('order_type_id')->constrained();
             $table->foreignId('branch_id')->constrained();
             $table->string('deceased_name');
             $table->date('date_of_death');
@@ -28,9 +28,9 @@ return new class extends Migration
             $table->foreignId('status_id')->constrained()->nullable();
             $table->foreignId('customer_id')->constrained();
             $table->foreignId('grave_space_id')->constrained();
-            $table->foreignId('created_by');
-            $table->foreignId('updated_by')->nullable();
-            $table->foreignId('deleted_by')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

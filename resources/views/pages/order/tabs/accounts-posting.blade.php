@@ -1,5 +1,5 @@
 @extends ('pages.order.form')
-@section('tab-content')
+@section('tab-accounts-posting')
     <div>
         <div class="row mt-40 mb-40">
             <h3 class="title text-center">Accounts Posting</h3>

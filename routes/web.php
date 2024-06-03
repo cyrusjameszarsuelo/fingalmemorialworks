@@ -28,11 +28,14 @@ use App\Http\Controllers\TitleController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::group(['middleware'=> 'auth'], function(){
 
-   Route::get('/order', [OrderController::class, 'index']);
+   Route::get('/order', [OrderController::class, 'index'])->name("order");
 	Route::get('/order/create/{tab?}', [OrderController::class, 'create']);
-	Route::match(['get', 'post'], 'order/create/createGeneralDetails', [OrderController::class, 'createGeneralDetails'])->name("createGeneralDetails");
+	Route::match(['put', 'post'], 'order/create/modifyGeneralDetails', [OrderController::class, 'modifyGeneralDetails']);
+	Route::match(['put', 'post'], 'order/create/modifyJobDetails', [OrderController::class, 'modifyJobDetails']);
+	Route::get('/order/edit/{tab?}/{order_id?}', [OrderController::class, 'edit']);
 	// Route::get('/',[UserController::class, 'index']);
 	
 	Route::get('/users',[UserController::class, 'index']);

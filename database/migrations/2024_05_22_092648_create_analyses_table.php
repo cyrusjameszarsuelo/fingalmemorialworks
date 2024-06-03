@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('description');
             $table->integer('nominal');
             $table->foreignId('branch_id')->constrained();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

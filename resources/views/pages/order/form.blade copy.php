@@ -126,41 +126,15 @@
                                                     @endforeach
                                                 </ul>
                                                 <div class="tab-content tab-custom-st">
-                                                        <div id="general-details"
-                                                            class="tab-pane fade in {{ 'general-details' === Request::segment(3) ? 'active' : '' }}"
+                                                    @foreach ($tabs as $tab)
+                                                        <div id="{{ $tab }}"
+                                                            class="tab-pane fade in {{ $tab === Request::segment(3) ? 'active' : '' }}"
                                                             role="tabpanel">
                                                             <div class="tab-ctn">
-                                                                @yield('tab-general-details')
+                                                                @yield('tab-content')
                                                             </div>
                                                         </div>
-                                                        <div id="job-details"
-                                                            class="tab-pane fade in {{ 'job-details' === Request::segment(3) ? 'active' : '' }}"
-                                                            role="tabpanel">
-                                                            <div class="tab-ctn">
-                                                                @yield('tab-job-details')
-                                                            </div>
-                                                        </div>
-                                                        <div id="inscription-details"
-                                                            class="tab-pane fade in {{ 'inscription-details' === Request::segment(3) ? 'active' : '' }}"
-                                                            role="tabpanel">
-                                                            <div class="tab-ctn">
-                                                                @yield('tab-inscription-details')
-                                                            </div>
-                                                        </div>
-                                                        <div id="accounts-posting"
-                                                            class="tab-pane fade in {{ 'accounts-posting' === Request::segment(3) ? 'active' : '' }}"
-                                                            role="tabpanel">
-                                                            <div class="tab-ctn">
-                                                                @yield('tab-accounts-posting')
-                                                            </div>
-                                                        </div>
-                                                        <div id="document"
-                                                            class="tab-pane fade in {{ 'document' === Request::segment(3) ? 'active' : '' }}"
-                                                            role="tabpanel">
-                                                            <div class="tab-ctn">
-                                                                @yield('tab-document')
-                                                            </div>
-                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
